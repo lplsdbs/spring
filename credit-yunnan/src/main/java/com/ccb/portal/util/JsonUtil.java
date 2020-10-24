@@ -1,0 +1,242 @@
+/**
+ * 
+ */
+package com.ccb.portal.util;
+
+import com.alibaba.fastjson.util.TypeUtils;
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import net.sf.json.JSONObject;
+
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.*;
+
+
+
+
+
+/**
+ * 
+ * JsonUtil
+ *	json 转换
+ *
+ */
+
+public class JsonUtil {
+
+	private static final ObjectMapper MAPPER = new ObjectMapper();
+
+	static {
+		MAPPER.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, false);
+//		TypeUtils.compatibleWithFieldName=true;
+	}
+
+	private static final JsonFactory JSONFACTORY = new JsonFactory();
+
+	/**
+	 * 转换Java Bean 为 json
+	 */
+	public static String beanToJson(Object o) {
+		StringWriter sw = new StringWriter(300);
+		JsonGenerator jsonGenerator = null;
+
+		try {
+			jsonGenerator = JSONFACTORY.createJsonGenerator(sw);
+			MAPPER.writeValue(jsonGenerator, o);
+			return sw.toString();
+
+		} catch (Exception e) {
+			return null;
+
+		} finally {
+			if (jsonGenerator != null) {
+				try {
+					jsonGenerator.close();
+				} catch (Exception e) {
+
+				}
+			}
+		}
+	}
+
+	/**
+	 * json 转 javabean
+	 * 对象里需要无参构造器
+	 * @param json
+	 * @return
+	 */
+	public static Object jsonToBean(String json, Class clazz) {
+		try {
+			return MAPPER.readValue(json, clazz);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+
+	/**
+	 * 转换Java Bean 为 HashMap
+	 */
+	@SuppressWarnings("unchecked")
+	public static Map<String, Object> beanToMap(Object o) {
+		try {
+			return MAPPER.readValue(beanToJson(o), HashMap.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * 转换Json String 为 HashMap
+	 */
+	@SuppressWarnings("unchecked")
+	public static Map<String, Object> jsonToMap(String json,
+			boolean collToString) {
+		try {
+			Map<String, Object> map = MAPPER.readValue(json, HashMap.class);
+			if (collToString) {
+				for (Map.Entry<String, Object> entry : map.entrySet()) {
+					if (entry.getValue() instanceof Collection
+							|| entry.getValue() instanceof Map) {
+						entry.setValue(beanToJson(entry.getValue()));
+					}
+				}
+			}
+			return map;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@SuppressWarnings("serial")
+	public static class jsonParseException extends Exception {
+		public jsonParseException(String message) {
+			super(message);
+		}
+	}
+
+	/**
+	 * List 转换成json
+	 * 
+	 * @param list
+	 * @return
+	 */
+	public static String listToJson(List<Map<String, String>> list) {
+		JsonGenerator jsonGenerator = null;
+		StringWriter sw = new StringWriter();
+		try {
+			jsonGenerator = JSONFACTORY.createJsonGenerator(sw);
+			new ObjectMapper().writeValue(jsonGenerator, list);
+			jsonGenerator.flush();
+			return sw.toString();
+		} catch (Exception e) {
+			return null;
+		} finally {
+			if (jsonGenerator != null) {
+				try {
+					jsonGenerator.flush();
+					jsonGenerator.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	/**
+	 * List 转换成json
+	 * 
+	 * @param list
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	public static String writeListJSON(List list) {
+		String sw = new String();
+		try {
+			sw = MAPPER.writeValueAsString(list);
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return sw;
+		
+	    
+	}
+
+	/**
+	 * json 转List
+	 * 
+	 * @param json
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static List<Map<String, String>> jsonToList(String json) {
+		try {
+			if (json != null && !"".equals(json.trim())) {
+				// JsonParser jsonParse = JSONFACTORY.createJsonParser(new
+				// StringReader(json));
+
+				List<Map<String, String>> arrayList = MAPPER.readValue(json,
+						ArrayList.class);
+				return arrayList;
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+
+	/**
+	 * json 转 javabean
+	 * 对象里需要无参构造器
+	 * @param json
+	 * @return
+	 */
+	public static Object jsonToBeans(String json, Class clazz) throws Exception{
+
+			return MAPPER.readValue(json, clazz);
+
+	}
+	/**
+	 * @param
+	 * json:需要转换的json串
+	 * @param
+	 * type:json对应的bean
+	 * @param
+	 * list：bean中list对应的class
+	 * @param
+	 * liststr:bean中list对应的name
+	 */
+
+	public static  <T>Object jsontobean(String json,Class type,Class list,String liststr){
+		JSONObject jsonObject=JSONObject.fromObject(json);
+		if(list!=null&&liststr!=null){
+			Map<String,Class>map=new HashMap<String, Class>();
+			map.put(liststr,list);
+			return JSONObject.toBean(jsonObject,type,map);
+		}else {
+			return JSONObject.toBean(jsonObject, type);
+		}
+	}
+	public static <T>Object fastjsonTobean(String json,Class cla){
+		TypeUtils.compatibleWithFieldName=true;//解决json转bena首字母小写的问题
+		Object jsonObject= com.alibaba.fastjson.JSONObject.parseObject(json,cla);
+		return jsonObject;
+	}
+}

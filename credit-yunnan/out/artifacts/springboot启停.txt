@@ -1,0 +1,11 @@
+
+首次部署linux
+切换到credit_yunnan_jar目录
+启动 nohup java -jar credit-yunnan.jar&
+退出 ctrl+c
+查看日志 tail -500f nohup.out
+非首次
+捕获进程 ps -ef|grep credit-yunnan.jar
+杀死进程 kill 进程号
+
+idea用artifacts 打jar包 打出来是一个包含项目jar包和依赖jar的文件夹，直接在文件夹中启动项目的jar包就行 

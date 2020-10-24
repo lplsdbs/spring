@@ -1,0 +1,18 @@
+server:
+  port: 8769
+foo: foo versions 233hulpledde
+spring:
+  cloud:
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+  rabbitmq:
+    host: 192.168.1.6
+    port: 5672
+    username: guest
+    password: guest
+management:
+  security:
+    enabled: false
+

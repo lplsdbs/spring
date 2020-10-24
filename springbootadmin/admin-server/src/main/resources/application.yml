@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: admin-server
+  boot:
+    admin:
+      routes:
+        endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream,activiti
+#      集成turbin页面数据比较慢，请求一下熔断的接口
+      turbine:
+        clusters: default
+        location: turbine-service
+security:
+  user:
+    password: 123456
+    name: admin
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:8761/eureka/
+  instance:
+    metadata-map:
+      user.name: admin
+      user.password: 123456
+server:
+  port: 5000
+management:
+  security:
+    enabled: false
+logging:
+  file: "logs/boot-admin-sample.log"

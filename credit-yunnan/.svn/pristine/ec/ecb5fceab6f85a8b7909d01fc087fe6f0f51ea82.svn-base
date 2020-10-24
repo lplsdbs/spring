@@ -1,0 +1,157 @@
+package com.ccb.portal.controller;
+
+import com.ccb.portal.controller.base.BaseController;
+import com.ccb.portal.entity.Page;
+import com.ccb.portal.entity.publicity.Index;
+import com.ccb.portal.entity.publicity.XyynHhmdInfo;
+import com.ccb.portal.entity.publicity.XyynXzcfInfo;
+import com.ccb.portal.entity.publicity.XyynXzxkInfo;
+import com.ccb.portal.service.XyynHhmdInfoService;
+import com.ccb.portal.service.XyynXzcfInfoService;
+import com.ccb.portal.service.XyynXzxkInfoService;
+import com.ccb.portal.util.PageData;
+import com.ccb.portal.util.ResultUtil;
+import com.ccb.portal.util.Tidings;
+import com.ccb.portal.vo.Const;
+import com.ccb.portal.vo.Result;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@Api(tags = { "双公示" }, value = "双公示")
+@RestController
+@RequestMapping("/publicity")
+public class PublicityController extends BaseController {
+    @Autowired
+    XyynHhmdInfoService xyynHhmdInfoService;
+    @Autowired
+    XyynXzcfInfoService xyynXzcfInfoService;
+    @Autowired
+    XyynXzxkInfoService xyynXzxkInfoService;
+    @ApiOperation(value="行政许可",notes="行政许可")
+    @RequestMapping(value="/xyynXzxkInfo",produces="application/json")
+    public Object xyynXzxkInfo(@RequestBody Page page){
+        Tidings< List<Index>>tidings=new Tidings<>();
+/*
+*  {
+    "currentPage":1,
+    "pd": {"keywords":""}
+
+  }
+*
+* */
+        try {
+            List<Index> list=xyynXzxkInfoService.xyynXzxkInfolistPage(page);
+            tidings.setStatus(Const.SUCCESS);
+            tidings.setT(list).setPage(page);
+            tidings.setMsg("查询成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            tidings.setStatus(Const.ERROR);
+            tidings.setMsg("查询失败");
+        }
+        return tidings;
+    }
+    @ApiOperation(value="行政处罚",notes="行政处罚")
+    @RequestMapping(value="/XyynXzcfInfo",produces="application/json")
+    public Object  XyynXzcfInfo(@RequestBody Page page){
+        Tidings< List<Index>>tidings=new Tidings<>();
+        try {
+            List<Index> list=xyynXzcfInfoService.XyynXzcfInfolistPage(page);
+            tidings.setStatus(Const.SUCCESS);
+            tidings.setT(list).setPage(page);
+            tidings.setMsg("查询成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            tidings.setStatus(Const.ERROR);
+            tidings.setMsg("查询失败");
+        }
+        return tidings;
+    }
+    @ApiOperation(value="红名单",notes="红名单")
+    @RequestMapping(value="/XyynHhmdRedInfo",produces="application/json")
+    public Object  XyynHhmdRedInfo(@RequestBody Page page){
+        Tidings< List<Index>>tidings=new Tidings<>();
+        try {
+            List<Index> list=xyynHhmdInfoService.XyynHhmdRedInfolistPage(page);
+            tidings.setStatus(Const.SUCCESS);
+            tidings.setT(list).setPage(page);
+            tidings.setMsg("查询成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            tidings.setStatus(Const.ERROR);
+            tidings.setMsg("查询失败");
+        }
+        return tidings;
+    }
+    @ApiOperation(value="黑名单",notes="黑名单")
+    @RequestMapping(value="/XyynHhmdBlaInfo",produces="application/json")
+    public Object  XyynHhmdBlaInfo(@RequestBody Page page){
+        Tidings< List<Index>>tidings=new Tidings<>();
+        try {
+            List<Index> list=xyynHhmdInfoService.XyynHhmdBlaInfolistPage(page);
+            tidings.setStatus(Const.SUCCESS);
+            tidings.setT(list).setPage(page);
+            tidings.setMsg("查询成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            tidings.setStatus(Const.ERROR);
+            tidings.setMsg("查询失败");
+        }
+        return tidings;
+    }
+
+    @ApiOperation(value="详情",notes="详情")
+    @RequestMapping(value="/XyynDetail",produces="application/json")
+    public Object XyynDetail(@RequestBody Index index){
+        Tidings tidings=new Tidings ();
+        try {
+            if(StringUtils.isBlank(index.getId())||StringUtils.isBlank(index.getStatus())){
+                tidings.setStatus(Const.ERROR);
+                tidings.setMsg("检查参数");
+                return tidings;
+            }
+            if(index.getStatus().equals("2")){
+                XyynXzcfInfo xyynXzcfInfo=xyynXzcfInfoService.getByid(index.getId());
+                tidings.setStatus(Const.SUCCESS);
+                tidings.setT(xyynXzcfInfo);
+            }else if(index.getStatus().equals("1")){
+                XyynXzxkInfo xyynXzxkInfo=xyynXzxkInfoService.getByid(index.getId());
+                tidings.setStatus(Const.SUCCESS);
+                tidings.setT(xyynXzxkInfo);
+            }else if(index.getStatus().equals("3")||index.getStatus().equals("4")){
+                XyynHhmdInfo xyynHhmdInfo=xyynHhmdInfoService.getByIdStatus(index);
+                tidings.setStatus(Const.SUCCESS);
+                tidings.setT(xyynHhmdInfo);
+            }
+            tidings.setMsg("查询成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            tidings.setStatus(Const.ERROR);
+            tidings.setMsg("查询失败");
+        }
+        return tidings;
+    }
+    @ApiOperation(value="首页搜索",notes="首页搜索")
+    @RequestMapping(value="/XyynIndex",produces="application/json")
+    public Object XyynIndex(@RequestBody Page page){
+        Tidings tidings=new Tidings ();
+        try {
+           List<Index>list=xyynXzxkInfoService.getIndexlistPage(page);
+           tidings.setT(list).setPage(page);
+           tidings.setMsg("查询成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            tidings.setStatus(Const.ERROR);
+            tidings.setMsg("查询失败");
+        }
+        return tidings;
+    }
+}

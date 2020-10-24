@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccb.portal.dao.credit.CreditLimitInfMapper" >
+  <resultMap id="BaseResultMap" type="com.ccb.portal.entity.Credit.CreditLimitInf" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="USER_NUM" property="userNum" jdbcType="VARCHAR" />
+    <result column="LOAN_DATE" property="loanDate" jdbcType="VARCHAR" />
+    <result column="LOAN_NUM" property="loanNum" jdbcType="VARCHAR" />
+    <result column="LOAN_LIMIT" property="loanLimit" jdbcType="VARCHAR" />
+    <result column="LOAN_BALANCE" property="loanBalance" jdbcType="VARCHAR" />
+    <result column="UNN_SOC_CR_CD" property="unnSocCrCd" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USER_NUM, LOAN_DATE, LOAN_NUM, LOAN_LIMIT, LOAN_BALANCE, UNN_SOC_CR_CD,CREATE_DATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CREDIT_LIMIT_INF
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByloanNum" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from CREDIT_LIMIT_INF
+    where LOAN_NUM = #{loanNum,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByUserNum" resultMap="BaseResultMap" parameterType="com.ccb.portal.entity.Credit.CreditUserinf" >
+    select
+    <include refid="Base_Column_List" />
+    from CREDIT_LIMIT_INF
+    where USER_NUM = #{userNum,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CREDIT_LIMIT_INF
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ccb.portal.entity.Credit.CreditLimitInf" >
+    insert into CREDIT_LIMIT_INF (ID, USER_NUM, LOAN_DATE, 
+      LOAN_NUM, LOAN_LIMIT, LOAN_BALANCE, 
+      UNN_SOC_CR_CD,CREATE_DATE)
+    values (#{id,jdbcType=VARCHAR}, #{userNum,jdbcType=VARCHAR}, #{loanDate,jdbcType=VARCHAR}, 
+      #{loanNum,jdbcType=VARCHAR}, #{loanLimit,jdbcType=VARCHAR}, #{loanBalance,jdbcType=VARCHAR}, 
+      #{unnSocCrCd,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccb.portal.entity.Credit.CreditLimitInf" >
+    insert into CREDIT_LIMIT_INF
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userNum != null" >
+        USER_NUM,
+      </if>
+      <if test="loanDate != null" >
+        LOAN_DATE,
+      </if>
+      <if test="loanNum != null" >
+        LOAN_NUM,
+      </if>
+      <if test="loanLimit != null" >
+        LOAN_LIMIT,
+      </if>
+      <if test="loanBalance != null" >
+        LOAN_BALANCE,
+      </if>
+      <if test="unnSocCrCd != null" >
+        UNN_SOC_CR_CD,
+      </if>
+      <if test="createDate!=null">
+        CREATE_DATE
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userNum != null" >
+        #{userNum,jdbcType=VARCHAR},
+      </if>
+      <if test="loanDate != null" >
+        #{loanDate,jdbcType=VARCHAR},
+      </if>
+      <if test="loanNum != null" >
+        #{loanNum,jdbcType=VARCHAR},
+      </if>
+      <if test="loanLimit != null" >
+        #{loanLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="loanBalance != null" >
+        #{loanBalance,jdbcType=VARCHAR},
+      </if>
+      <if test="unnSocCrCd != null" >
+        #{unnSocCrCd,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate!=null">
+       #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccb.portal.entity.Credit.CreditLimitInf" >
+    update CREDIT_LIMIT_INF
+    <set >
+      <if test="userNum != null" >
+        USER_NUM = #{userNum,jdbcType=VARCHAR},
+      </if>
+      <if test="loanDate != null" >
+        LOAN_DATE = #{loanDate,jdbcType=VARCHAR},
+      </if>
+      <if test="loanNum != null" >
+        LOAN_NUM = #{loanNum,jdbcType=VARCHAR},
+      </if>
+      <if test="loanLimit != null" >
+        LOAN_LIMIT = #{loanLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="loanBalance != null" >
+        LOAN_BALANCE = #{loanBalance,jdbcType=VARCHAR},
+      </if>
+      <if test="unnSocCrCd != null" >
+        UNN_SOC_CR_CD = #{unnSocCrCd,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate!=null">
+        CREATE_DATE=#{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccb.portal.entity.Credit.CreditLimitInf" >
+    update CREDIT_LIMIT_INF
+    set USER_NUM = #{userNum,jdbcType=VARCHAR},
+      LOAN_DATE = #{loanDate,jdbcType=VARCHAR},
+      LOAN_NUM = #{loanNum,jdbcType=VARCHAR},
+      LOAN_LIMIT = #{loanLimit,jdbcType=VARCHAR},
+      LOAN_BALANCE = #{loanBalance,jdbcType=VARCHAR},
+      UNN_SOC_CR_CD = #{unnSocCrCd,jdbcType=VARCHAR},
+      CREATE_DATE=#{createDate,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

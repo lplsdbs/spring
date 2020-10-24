@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccb.portal.dao.publicty.XyynHhmdInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ccb.portal.entity.publicity.XyynHhmdInfo">
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="ORIGINAL_ID" jdbcType="VARCHAR" property="originalId" />
+    <result column="REGION" jdbcType="VARCHAR" property="region" />
+    <result column="SUBJECT_TYPE" jdbcType="VARCHAR" property="subjectType" />
+    <result column="LIST_TYPE" jdbcType="VARCHAR" property="listType" />
+    <result column="MEMORANDUM" jdbcType="VARCHAR" property="memorandum" />
+    <result column="MATTER" jdbcType="VARCHAR" property="matter" />
+    <result column="MATTER_TYPE" jdbcType="VARCHAR" property="matterType" />
+    <result column="IS_EXECUTED" jdbcType="VARCHAR" property="isExecuted" />
+    <result column="IS_NATIVE" jdbcType="VARCHAR" property="isNative" />
+    <result column="REMARKS" jdbcType="VARCHAR" property="remarks" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="CREDIT_CODE" jdbcType="VARCHAR" property="creditCode" />
+    <result column="BEHAVIOR" jdbcType="VARCHAR" property="behavior" />
+    <result column="RECORD_UPDATE_TIME" jdbcType="TIMESTAMP" property="recordUpdateTime" />
+    <result column="PERIOD_OF_VALIDITY_T0" jdbcType="TIMESTAMP" property="periodOfValidityT0" />
+    <result column="IS_COUNTRY_IMPORT" jdbcType="VARCHAR" property="isCountryImport" />
+    <result column="ADD_USER_ID" jdbcType="VARCHAR" property="addUserId" />
+    <result column="ADD_TIME" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="UPDATE_USER_ID" jdbcType="VARCHAR" property="updateUserId" />
+    <result column="UPDAT_TIME" jdbcType="TIMESTAMP" property="updatTime" />
+    <result column="IS_DELETE" jdbcType="VARCHAR" property="isDelete" />
+    <result column="ADD_DEPARTMENT" jdbcType="VARCHAR" property="addDepartment" />
+    <result column="COGNIZANCE_STATE" jdbcType="VARCHAR" property="cognizanceState" />
+    <result column="PUBLICITY_STATE" jdbcType="VARCHAR" property="publicityState" />
+    <result column="EXECUTE_STATE" jdbcType="VARCHAR" property="executeState" />
+    <result column="DURATION" jdbcType="VARCHAR" property="duration" />
+    <result column="PUBLICITY_START_TIME" jdbcType="TIMESTAMP" property="publicityStartTime" />
+    <result column="PUBLICITY_END_TIME" jdbcType="TIMESTAMP" property="publicityEndTime" />
+    <result column="COGNIZANCE_TIME" jdbcType="TIMESTAMP" property="cognizanceTime" />
+    <result column="REJECT_TIME" jdbcType="TIMESTAMP" property="rejectTime" />
+    <result column="REJECT_BASIS" jdbcType="VARCHAR" property="rejectBasis" />
+    <result column="LEGAL_REPRESENTATIVE" jdbcType="VARCHAR" property="legalRepresentative" />
+    <result column="INCLUDED_REASON" jdbcType="VARCHAR" property="includedReason" />
+    <result column="ADJUDICATION" jdbcType="VARCHAR" property="adjudication" />
+    <result column="ADJUDICATION_BASIS" jdbcType="VARCHAR" property="adjudicationBasis" />
+    <result column="ADJUDICATION_TIME" jdbcType="TIMESTAMP" property="adjudicationTime" />
+    <result column="AGE" jdbcType="DECIMAL" property="age" />
+    <result column="SEX" jdbcType="VARCHAR" property="sex" />
+  </resultMap>
+  <resultMap id="index" type="com.ccb.portal.entity.publicity.Index">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="lyjg" jdbcType="VARCHAR" property="lyjg" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <select id="XyynHhmdRedInfolistPage" parameterType="pd" resultMap="index">
+    select id, NAME||'"红名单"'name,ADD_DEPARTMENT lyjg,'3'status from XYYN_HHMD_INFO where LIST_TYPE=1
+    <if test="pd.keywords != null and pd.keywords !=''">
+      and NAME like '%'||#{pd.keywords,jdbcType=VARCHAR}|| '%'
+    </if>
+  </select>
+  <select id="getByIdStatus" parameterType="com.ccb.portal.entity.publicity.Index" resultMap="BaseResultMap">
+    select * from XYYN_HHMD_INFO where id=#{id,jdbcType=VARCHAR}
+    <if test="status == 3">
+      and LIST_TYPE=0
+    </if>
+    <if test="status == 4">
+      and LIST_TYPE=1
+    </if>
+  </select>
+  <select id="XyynHhmdBlaInfolistPage" parameterType="pd" resultMap="index">
+    select id, NAME||'"黑名单"'name,ADD_DEPARTMENT lyjg,'4'status from XYYN_HHMD_INFO where LIST_TYPE=0
+    <if test="pd.keywords != null and pd.keywords !=''">
+      and NAME like '%'||#{pd.keywords,jdbcType=VARCHAR}|| '%'
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.ccb.portal.entity.publicity.XyynHhmdInfo">
+    insert into XYYN_HHMD_INFO (ID, ORIGINAL_ID, REGION, 
+      SUBJECT_TYPE, LIST_TYPE, MEMORANDUM, 
+      MATTER, MATTER_TYPE, IS_EXECUTED, 
+      IS_NATIVE, REMARKS, NAME, 
+      CREDIT_CODE, BEHAVIOR, RECORD_UPDATE_TIME, 
+      PERIOD_OF_VALIDITY_T0, IS_COUNTRY_IMPORT, 
+      ADD_USER_ID, ADD_TIME, UPDATE_USER_ID, 
+      UPDAT_TIME, IS_DELETE, ADD_DEPARTMENT, 
+      COGNIZANCE_STATE, PUBLICITY_STATE, EXECUTE_STATE, 
+      DURATION, PUBLICITY_START_TIME, PUBLICITY_END_TIME, 
+      COGNIZANCE_TIME, REJECT_TIME, REJECT_BASIS, 
+      LEGAL_REPRESENTATIVE, INCLUDED_REASON, ADJUDICATION, 
+      ADJUDICATION_BASIS, ADJUDICATION_TIME, 
+      AGE, SEX)
+    values (#{id,jdbcType=VARCHAR}, #{originalId,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR}, 
+      #{subjectType,jdbcType=VARCHAR}, #{listType,jdbcType=VARCHAR}, #{memorandum,jdbcType=VARCHAR}, 
+      #{matter,jdbcType=VARCHAR}, #{matterType,jdbcType=VARCHAR}, #{isExecuted,jdbcType=VARCHAR}, 
+      #{isNative,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{creditCode,jdbcType=VARCHAR}, #{behavior,jdbcType=VARCHAR}, #{recordUpdateTime,jdbcType=TIMESTAMP}, 
+      #{periodOfValidityT0,jdbcType=TIMESTAMP}, #{isCountryImport,jdbcType=VARCHAR}, 
+      #{addUserId,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=VARCHAR}, 
+      #{updatTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=VARCHAR}, #{addDepartment,jdbcType=VARCHAR}, 
+      #{cognizanceState,jdbcType=VARCHAR}, #{publicityState,jdbcType=VARCHAR}, #{executeState,jdbcType=VARCHAR}, 
+      #{duration,jdbcType=VARCHAR}, #{publicityStartTime,jdbcType=TIMESTAMP}, #{publicityEndTime,jdbcType=TIMESTAMP}, 
+      #{cognizanceTime,jdbcType=TIMESTAMP}, #{rejectTime,jdbcType=TIMESTAMP}, #{rejectBasis,jdbcType=VARCHAR}, 
+      #{legalRepresentative,jdbcType=VARCHAR}, #{includedReason,jdbcType=VARCHAR}, #{adjudication,jdbcType=VARCHAR}, 
+      #{adjudicationBasis,jdbcType=VARCHAR}, #{adjudicationTime,jdbcType=TIMESTAMP}, 
+      #{age,jdbcType=DECIMAL}, #{sex,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccb.portal.entity.publicity.XyynHhmdInfo">
+    insert into XYYN_HHMD_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="originalId != null">
+        ORIGINAL_ID,
+      </if>
+      <if test="region != null">
+        REGION,
+      </if>
+      <if test="subjectType != null">
+        SUBJECT_TYPE,
+      </if>
+      <if test="listType != null">
+        LIST_TYPE,
+      </if>
+      <if test="memorandum != null">
+        MEMORANDUM,
+      </if>
+      <if test="matter != null">
+        MATTER,
+      </if>
+      <if test="matterType != null">
+        MATTER_TYPE,
+      </if>
+      <if test="isExecuted != null">
+        IS_EXECUTED,
+      </if>
+      <if test="isNative != null">
+        IS_NATIVE,
+      </if>
+      <if test="remarks != null">
+        REMARKS,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="creditCode != null">
+        CREDIT_CODE,
+      </if>
+      <if test="behavior != null">
+        BEHAVIOR,
+      </if>
+      <if test="recordUpdateTime != null">
+        RECORD_UPDATE_TIME,
+      </if>
+      <if test="periodOfValidityT0 != null">
+        PERIOD_OF_VALIDITY_T0,
+      </if>
+      <if test="isCountryImport != null">
+        IS_COUNTRY_IMPORT,
+      </if>
+      <if test="addUserId != null">
+        ADD_USER_ID,
+      </if>
+      <if test="addTime != null">
+        ADD_TIME,
+      </if>
+      <if test="updateUserId != null">
+        UPDATE_USER_ID,
+      </if>
+      <if test="updatTime != null">
+        UPDAT_TIME,
+      </if>
+      <if test="isDelete != null">
+        IS_DELETE,
+      </if>
+      <if test="addDepartment != null">
+        ADD_DEPARTMENT,
+      </if>
+      <if test="cognizanceState != null">
+        COGNIZANCE_STATE,
+      </if>
+      <if test="publicityState != null">
+        PUBLICITY_STATE,
+      </if>
+      <if test="executeState != null">
+        EXECUTE_STATE,
+      </if>
+      <if test="duration != null">
+        DURATION,
+      </if>
+      <if test="publicityStartTime != null">
+        PUBLICITY_START_TIME,
+      </if>
+      <if test="publicityEndTime != null">
+        PUBLICITY_END_TIME,
+      </if>
+      <if test="cognizanceTime != null">
+        COGNIZANCE_TIME,
+      </if>
+      <if test="rejectTime != null">
+        REJECT_TIME,
+      </if>
+      <if test="rejectBasis != null">
+        REJECT_BASIS,
+      </if>
+      <if test="legalRepresentative != null">
+        LEGAL_REPRESENTATIVE,
+      </if>
+      <if test="includedReason != null">
+        INCLUDED_REASON,
+      </if>
+      <if test="adjudication != null">
+        ADJUDICATION,
+      </if>
+      <if test="adjudicationBasis != null">
+        ADJUDICATION_BASIS,
+      </if>
+      <if test="adjudicationTime != null">
+        ADJUDICATION_TIME,
+      </if>
+      <if test="age != null">
+        AGE,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="originalId != null">
+        #{originalId,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null">
+        #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectType != null">
+        #{subjectType,jdbcType=VARCHAR},
+      </if>
+      <if test="listType != null">
+        #{listType,jdbcType=VARCHAR},
+      </if>
+      <if test="memorandum != null">
+        #{memorandum,jdbcType=VARCHAR},
+      </if>
+      <if test="matter != null">
+        #{matter,jdbcType=VARCHAR},
+      </if>
+      <if test="matterType != null">
+        #{matterType,jdbcType=VARCHAR},
+      </if>
+      <if test="isExecuted != null">
+        #{isExecuted,jdbcType=VARCHAR},
+      </if>
+      <if test="isNative != null">
+        #{isNative,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="creditCode != null">
+        #{creditCode,jdbcType=VARCHAR},
+      </if>
+      <if test="behavior != null">
+        #{behavior,jdbcType=VARCHAR},
+      </if>
+      <if test="recordUpdateTime != null">
+        #{recordUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="periodOfValidityT0 != null">
+        #{periodOfValidityT0,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isCountryImport != null">
+        #{isCountryImport,jdbcType=VARCHAR},
+      </if>
+      <if test="addUserId != null">
+        #{addUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="updatTime != null">
+        #{updatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=VARCHAR},
+      </if>
+      <if test="addDepartment != null">
+        #{addDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="cognizanceState != null">
+        #{cognizanceState,jdbcType=VARCHAR},
+      </if>
+      <if test="publicityState != null">
+        #{publicityState,jdbcType=VARCHAR},
+      </if>
+      <if test="executeState != null">
+        #{executeState,jdbcType=VARCHAR},
+      </if>
+      <if test="duration != null">
+        #{duration,jdbcType=VARCHAR},
+      </if>
+      <if test="publicityStartTime != null">
+        #{publicityStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publicityEndTime != null">
+        #{publicityEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cognizanceTime != null">
+        #{cognizanceTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rejectTime != null">
+        #{rejectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rejectBasis != null">
+        #{rejectBasis,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentative != null">
+        #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="includedReason != null">
+        #{includedReason,jdbcType=VARCHAR},
+      </if>
+      <if test="adjudication != null">
+        #{adjudication,jdbcType=VARCHAR},
+      </if>
+      <if test="adjudicationBasis != null">
+        #{adjudicationBasis,jdbcType=VARCHAR},
+      </if>
+      <if test="adjudicationTime != null">
+        #{adjudicationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=DECIMAL},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+ </mapper>

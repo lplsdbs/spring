@@ -1,0 +1,9 @@
+spring:
+  redis:
+    cluster:
+      #设置key的生存时间，当key过期时，它会被自动删除；
+      expireSeconds: 120
+      #设置命令的执行时间，如果超过这个时间，则报错;
+      commandTimeout: 5000
+      #设置redis集群的节点信息，其中namenode为域名解析，通过解析域名来获取相应的地址;
+      nodes: namenode22:6379,datanode23:6379,datanode24:6379,datanode25:6379,datanode26:6379,datanode27:6379

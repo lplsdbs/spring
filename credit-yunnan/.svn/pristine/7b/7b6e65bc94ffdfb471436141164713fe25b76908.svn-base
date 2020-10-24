@@ -1,0 +1,10 @@
+package com.ccb.portal.util;
+
+import java.util.ResourceBundle;
+
+public class PropertiesUtil {
+    public static  String getPropertierByKey(String key){
+        ResourceBundle conf=ResourceBundle.getBundle("config");
+        return conf.getString(key);
+    }
+}

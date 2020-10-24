@@ -1,0 +1,290 @@
+package com.ccb.portal.util;
+
+
+import com.ccb.portal.entity.*;
+import com.ccb.portal.vo.Const;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.SSLContextBuilder;
+import org.apache.http.conn.ssl.TrustStrategy;
+import org.apache.http.conn.ssl.X509HostnameVerifier;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLException;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocket;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.security.GeneralSecurityException;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+import java.util.*;
+
+
+/**
+ *
+ */
+@Component
+public class HttpClientUtils {
+
+    private static Logger logger = LoggerFactory.getLogger(HttpClientUtils.class);
+    private static PoolingHttpClientConnectionManager connMgr;
+    private static RequestConfig requestConfig;
+    private static final int MAX_TIMEOUT = 7000;
+
+    static {
+        // 设置连接池
+        connMgr = new PoolingHttpClientConnectionManager();
+        // 设置连接池大小
+        connMgr.setMaxTotal(100);
+        connMgr.setDefaultMaxPerRoute(connMgr.getMaxTotal());
+
+        RequestConfig.Builder configBuilder = RequestConfig.custom();
+        // 设置连接超时
+        configBuilder.setConnectTimeout(MAX_TIMEOUT);
+        // 设置读取超时
+        configBuilder.setSocketTimeout(MAX_TIMEOUT);
+        // 设置从连接池获取连接实例的超时
+        configBuilder.setConnectionRequestTimeout(MAX_TIMEOUT);
+        // 在提交请求之前 测试连接是否可用
+        configBuilder.setStaleConnectionCheckEnabled(true);
+        requestConfig = configBuilder.build();
+    }
+   //http
+    public static String doPost(String url, JSONObject json){
+
+        CloseableHttpClient closeableHttpClient = HttpClientBuilder.create().build();
+
+        HttpPost post = new HttpPost(url);
+        post.setConfig(requestConfig);
+        JSONObject jsonObject = null;
+        String result = null;
+        HttpResponse httpResponse = null;
+
+        if (null != json){
+
+            logger.info(url+"----------------------------发送的JSON数据："+json.toString());
+            post.addHeader("content-type","application/json;charset=utf-8");
+            post.setHeader("Accept","application/json");
+            post.setEntity(new StringEntity(json.toString(), Charset.forName("UTF-8")));
+
+        }
+        try {
+            httpResponse = closeableHttpClient.execute(post);//发送请求
+            System.out.println(httpResponse.getStatusLine().getStatusCode());
+            if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+
+                result = EntityUtils.toString(httpResponse.getEntity());//返回信息
+
+            }
+        } catch (Exception e) {
+            e.getMessage();
+            result = Const.SEND_EXCEPTION;
+        }
+
+
+        return result;
+
+    }
+
+    //http
+    public static String Post(String url, String para,Map<String,String>head){
+
+        CloseableHttpClient closeableHttpClient = HttpClientBuilder.create().build();
+
+        HttpPost post = new HttpPost(url);
+        post.setConfig(requestConfig);
+        JSONObject jsonObject = null;
+        String result = null;
+        HttpResponse httpResponse = null;
+        if(head!=null){
+            Set<String>set=head.keySet();
+            for(String str:set){
+                post.addHeader(str,head.get(str));
+            }
+        }
+        if (null != para){
+
+            logger.info(url+"----------------------------发送的数据："+para);
+            post.addHeader("content-type","application/json;charset=utf-8");
+            post.setHeader("Accept","application/json");
+            post.setEntity(new StringEntity(para, Charset.forName("UTF-8")));
+
+        }
+        try {
+            httpResponse = closeableHttpClient.execute(post);//发送请求
+            System.out.println(httpResponse.getStatusLine().getStatusCode());
+            if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+
+                result = EntityUtils.toString(httpResponse.getEntity(),"utf-8");//返回信息
+
+            }
+        } catch (Exception e) {
+            e.getMessage();
+            result = Const.SEND_EXCEPTION;
+        }
+
+
+        return result;
+
+    }
+    public static String Get(String url){
+        CloseableHttpClient http=HttpClients.createDefault();
+        HttpGet get=new HttpGet(url);
+        get.setConfig(requestConfig);
+        String response=null;
+        HttpResponse response1=null;
+        try {
+            response1 = http.execute(get);//发送请求
+            System.out.println(response1.getStatusLine().getStatusCode());
+            if (response1.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                response = EntityUtils.toString(response1.getEntity(),"utf-8");//返回信息
+            }
+        } catch (Exception e) {
+            e.getMessage();
+            response = Const.SEND_EXCEPTION;
+        }
+        return response;
+    }
+    public static void main(String[] args) {
+        String url="http://128.196.221.92:8080/gsp/fsx01006";//模拟登陆获取登陆token
+        Map<String,String>map=new HashMap<>();
+        map.put("tenant","530000000000");
+        map.put("txn_itt_chnl_id","00");
+        map.put("txn_itt_chnl_type","11");
+        map.put("membername","wangrj");
+        map.put("password","111111");
+        map.put("logintype","0");
+        try {
+            Map<String,String>head=new HashMap<>();
+            head.put("C-App-Id","GSP_APP_001");
+            JSONObject jsonObject= JSONObject.fromObject(map);
+            System.out.println("req--"+jsonObject.toString());
+            System.out.println(new String(Post(url,jsonObject.toString(),head)));
+            String res=Post(url,jsonObject.toString(),head);
+            JSONObject js=JSONObject.fromObject(res);
+            String tok=js.get("C-Response-Body")+"";
+            JSONObject toke=JSONObject.fromObject(tok);
+            System.out.println(toke);
+            String token=toke.getString("Token");
+            System.out.println(token);
+            head.put("C-Dynamic-Password-Foruser",token);
+            String urltem="http://128.196.221.88:8080/auth/crtAccessLinkForUserTmp";//获取临时token
+            System.out.println(Post(urltem,null,head));
+            JSONObject jsonObject1=JSONObject.fromObject(Post(urltem,null,head));
+            String temtofen=jsonObject1.get("C-Response-Body").toString();
+            Map<String,String>usermap=new HashMap<>();
+            String usertemp="http://128.196.221.88:8080/auth/getAccessLinkForUserTmpMsg?appPwd=123456&accessLink="+temtofen+"&C-App-Id=CYN_APP_001";//临时token获取用户信息
+            System.out.println(Get(usertemp));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * 发送 SSL POST 请求（HTTPS），JSON形式
+     * @param apiUrl API接口URL
+     * @param json JSON对象
+     * @return
+     */
+
+    public static String doPostSSL(String apiUrl, Object json) {
+        CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(createSSLConnSocketFactory()).setConnectionManager(connMgr).setDefaultRequestConfig(requestConfig).build();
+        HttpPost httpPost = new HttpPost(apiUrl);
+        CloseableHttpResponse response = null;
+        String httpStr = null;
+
+        try {
+            httpPost.setConfig(requestConfig);
+            StringEntity stringEntity = new StringEntity(json.toString(),"UTF-8");//解决中文乱码问题
+//            stringEntity.setContentEncoding("UTF-8");
+//            stringEntity.setContentType("application/json");
+            httpPost.addHeader("content-type","application/json;charset=utf-8");
+            httpPost.setHeader("Accept","application/json");
+            httpPost.setEntity(stringEntity);
+            response = httpClient.execute(httpPost);
+            int statusCode = response.getStatusLine().getStatusCode();
+            if (statusCode != HttpStatus.SC_OK) {
+                return null;
+            }
+            HttpEntity entity = response.getEntity();
+            if (entity == null) {
+                return null;
+            }
+            httpStr = EntityUtils.toString(entity, "utf-8");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (response != null) {
+                try {
+                    EntityUtils.consume(response.getEntity());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return httpStr;
+    }
+
+    /**
+     * 创建SSL安全连接
+     *
+     * @return
+     */
+    private static SSLConnectionSocketFactory createSSLConnSocketFactory() {
+        SSLConnectionSocketFactory sslsf = null;
+        try {
+            SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustStrategy() {
+
+                public boolean isTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                    return true;
+                }
+            }).build();
+            sslsf = new SSLConnectionSocketFactory(sslContext, new X509HostnameVerifier() {
+
+                @Override
+                public boolean verify(String arg0, SSLSession arg1) {
+                    return true;
+                }
+
+                @Override
+                public void verify(String host, SSLSocket ssl) throws IOException {
+                }
+
+                @Override
+                public void verify(String host, X509Certificate cert) throws SSLException {
+                }
+
+                @Override
+                public void verify(String host, String[] cns, String[] subjectAlts) throws SSLException {
+                }
+            });
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        }
+        return sslsf;
+    }
+}

@@ -1,0 +1,11 @@
+package com.ccb.portal.service;
+
+import java.util.Map;
+
+import com.ccb.portal.entity.YunnanCredit;
+
+public interface YunnanCreditService {
+
+	public YunnanCredit getYunNanCreditByCstId(Map<String, Object> map)throws Exception;
+
+}

@@ -1,0 +1,79 @@
+package com.ccb.portal.entity.Credit;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
+
+public class YunnanCredit {
+	@JsonProperty(value = "cst_id")
+    private Short cstId;
+	@JsonProperty(value = "Cst_type")
+    private String CstType;
+	@JsonProperty(value = "credit_value")
+    private Short creditValue;
+	@JsonProperty(value = "model_type")
+    private String modelType;
+	@JsonProperty(value = "comment_limit")
+    private Short commentLimit;
+	@JsonProperty(value = "credit_rating_level")
+    private String creditRatingLevel;
+	@JsonProperty(value = "dmsn_grplist")
+    private List<CreditDmsn> dmsnGrplist;
+
+	public Short getCstId() {
+		return cstId;
+	}
+
+	public void setCstId(Short cstId) {
+		this.cstId = cstId;
+	}
+	@JsonIgnore
+	public String getCstType() {
+		return CstType;
+	}
+
+	public void setCstType(String cstType) {
+		CstType = cstType;
+	}
+
+	public Short getCreditValue() {
+		return creditValue;
+	}
+
+	public void setCreditValue(Short creditValue) {
+		this.creditValue = creditValue;
+	}
+
+	public String getModelType() {
+		return modelType;
+	}
+
+	public void setModelType(String modelType) {
+		this.modelType = modelType;
+	}
+
+	public Short getCommentLimit() {
+		return commentLimit;
+	}
+
+	public void setCommentLimit(Short commentLimit) {
+		this.commentLimit = commentLimit;
+	}
+
+	public String getCreditRatingLevel() {
+		return creditRatingLevel;
+	}
+
+	public void setCreditRatingLevel(String creditRatingLevel) {
+		this.creditRatingLevel = creditRatingLevel;
+	}
+
+	public List<CreditDmsn> getDmsnGrplist() {
+		return dmsnGrplist;
+	}
+
+	public void setDmsnGrplist(List<CreditDmsn> dmsnGrplist) {
+		this.dmsnGrplist = dmsnGrplist;
+	}
+}

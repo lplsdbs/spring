@@ -1,0 +1,1 @@
+ps -aux | grep httpDemo.jar | awk '{print $2}' | xargs kill

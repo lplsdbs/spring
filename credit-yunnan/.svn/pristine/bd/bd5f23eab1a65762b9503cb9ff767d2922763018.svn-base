@@ -1,0 +1,14 @@
+package com.ccb.portal.service;
+
+import java.util.Map;
+
+import com.ccb.portal.entity.ResponseCredit;
+import com.ccb.portal.entity.ResponsePersonCredit;
+import com.ccb.portal.entity.YunnanCredit;
+
+public interface YunnanCreditService {
+
+	public ResponseCredit getYunNanCreditByCstId(Map<String, String> map)throws Exception;
+
+	ResponsePersonCredit getPersonCreditByCstId(Map map)throws Exception;
+}

@@ -1,0 +1,47 @@
+package com.ccb.portal.vo;
+
+import net.sf.json.JSONObject;
+import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Component
+public class Const {
+    public static final String ERROR="error";
+    public static final String SUCCESS="SUCCESS";
+    public static final String SEND_EXCEPTION="发送异常";
+    public static final String [] CSTTYPE={"企业"};
+    public static final Integer DmsnGrplistSize=6;
+    public static  String companyCheckNum(String key){
+        Map<String,String>map=new HashMap<>();
+        map.put("00","未认证");
+        map.put("01","认证通过");
+        map.put("02","认证中");
+        map.put("03","认证不通过");
+        return  map.get(key);
+    }
+    public static JSONObject getJsonob(String Txn_Cd){
+        JSONObject jsonObject=new JSONObject();
+        jsonObject.put("TermTp","10");
+        jsonObject.put("Tpl_Vno","1.0");
+        jsonObject.put("Chnl_TpCd","9976");
+        jsonObject.put("Txn_Cd",Txn_Cd);
+        jsonObject.put("Txn_Chnl_ID","500010");
+        return jsonObject;
+    }
+    public static final String COMPANYPASS="01";//企业验证通过状态
+    public static final String COMPANYPREPOSE="000000";//企业前置校验成功状态
+    public static String getComErrNum(String key){
+        Map<String,String>map=new HashMap<>();
+        map.put("100011","企业已授权成功，且当前申请为实际控制人");
+        map.put("100012","企业未认证，需先进行认证");
+        map.put("100013","无会审信息或已失效或会审失败，需发起会审");
+        map.put("100014","会审中，请等待会审结果通知");
+        map.put("100015","客户信息补全，需客户经理补录");
+        map.put("100029","当前申请人为非实际控制人");
+        map.put("100057","当前客户不符合小微快贷条件");
+        return map.get(key);
+
+    }
+}

@@ -1,0 +1,80 @@
+package com.ccb.portal.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Date;
+
+public class CreditDmsn {
+	@JsonIgnore
+    private Short id;
+    @JsonProperty(value = "dmsn_type")
+    private String dmsnType;
+	@JsonProperty(value = "dmsn_value")
+    private Short dmsnValue;
+	@JsonIgnore
+    private Short cstId;
+	@JsonProperty(value = "dmsn_max_value")
+    private Short dmsnMaxValue;
+	@JsonIgnore
+    private String cstType;
+	@JsonIgnore
+    private Date scoreDate;
+
+
+	public Short getId() {
+		return id;
+	}
+
+	public void setId(Short id) {
+		this.id = id;
+	}
+
+	public String getDmsnType() {
+		return dmsnType;
+	}
+
+	public void setDmsnType(String dmsnType) {
+		this.dmsnType = dmsnType;
+	}
+
+	public Short getDmsnValue() {
+		return dmsnValue;
+	}
+
+	public void setDmsnValue(Short dmsnValue) {
+		this.dmsnValue = dmsnValue;
+	}
+
+	public Short getCstId() {
+		return cstId;
+	}
+
+	public void setCstId(Short cstId) {
+		this.cstId = cstId;
+	}
+
+	public Short getDmsnMaxValue() {
+		return dmsnMaxValue;
+	}
+
+	public void setDmsnMaxValue(Short dmsnMaxValue) {
+		this.dmsnMaxValue = dmsnMaxValue;
+	}
+
+	public String getCstType() {
+		return cstType;
+	}
+
+	public void setCstType(String cstType) {
+		this.cstType = cstType;
+	}
+
+	public Date getScoreDate() {
+		return scoreDate;
+	}
+
+	public void setScoreDate(Date scoreDate) {
+		this.scoreDate = scoreDate;
+	}
+}

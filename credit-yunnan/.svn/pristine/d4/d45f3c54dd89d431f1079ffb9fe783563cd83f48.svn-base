@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccb.portal.dao.credit.RoleDao">
+	<resultMap id="BaseResultMap" type="com.ccb.portal.entity.Credit.Role">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="demesion_id" property="rlNo" jdbcType="VARCHAR" />
+		<result column="credit" property="rlNm" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, rl_no, rl_nm
+	</sql>
+
+	<sql id="Like_Begin">
+		CONCAT(CONCAT('%', Replace(Replace(Replace(
+	</sql>
+	<sql id="Like_End">
+		, '/', '//'), '%', '/%'), '_', '/_')),'%') escape '/'
+	</sql>
+
+	<!-- <select id="getRoleList" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select
+		<include refid="Base_Column_List" />
+		from role r
+		<where>
+			1 = 1
+			<if test="roleInfo != null and roleInfo != '' ">
+				AND ( r.rl_no LIKE
+				<include refid="Like_Begin" />
+				#{roleInfo}
+				<include refid="Like_End" />
+				OR r.rl_nm like
+				<include refid="Like_Begin" />
+				#{roleInfo}
+				<include refid="Like_End" />
+				)
+			</if>
+		</where>
+		order by r.rl_no asc
+	</select> -->
+	<select id="getRoleList" resultMap="BaseResultMap"
+		parameterType="java.util.Map">
+		select
+		id, credit, demesion_id
+		from yunnan_credit r
+		order by r.id asc
+	</select>
+
+</mapper>

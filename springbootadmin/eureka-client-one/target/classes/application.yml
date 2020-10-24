@@ -1,0 +1,20 @@
+server:
+  port: 8768
+eureka:
+  client:
+    service-url:
+      defaultZone: http://peer1:8761/eureka/
+#eureka:
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#    service-url:
+#      defaultZone: http://peer1:8761/eureka/
+spring:
+  application:
+    name: eureka-client-one
+management:
+  security:
+    enabled: false
+logging:
+  file: "logs/eureka-client-one.log"

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccb.portal.dao.YunnanCreditMapper" >
+  <resultMap id="BaseResultMap" type="com.ccb.portal.entity.YunnanCredit" >
+    <result column="CST_ID" property="cstId" jdbcType="DECIMAL" />
+    <result column="CST_TYPE" property="CstType" jdbcType="VARCHAR" />
+    <result column="CREDIT_VALUE" property="creditValue" jdbcType="DECIMAL" />
+    <result column="MODEL_TYPE" property="modelType" jdbcType="VARCHAR" />
+    <result column="COMMENT_LIMIT" property="commentLimit" jdbcType="DECIMAL" />
+    <result column="CREDIT_RATING_LEVEL" property="creditRatingLevel" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="getYunNanCreditByCstId" parameterType="java.util.Map" resultMap="BaseResultMap" >
+  	select * from YUNNAN_CREDIT where CST_ID=#{Cst_id,jdbcType=DECIMAL}
+  </select>
+</mapper>

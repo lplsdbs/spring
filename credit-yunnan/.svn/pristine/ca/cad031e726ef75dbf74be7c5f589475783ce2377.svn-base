@@ -1,0 +1,116 @@
+package com.ccb.portal.entity;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.Date;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class CreditUserinf {
+    @JSONField(name="User_Id")
+    private String userId;//调用北开使用临时token获取的用户id
+    @JSONField(name="User_Name")
+    private String userName;
+    @JSONField(name="Corp_Name")
+    private String corpName;
+    @JSONField(name="Usco")
+    private String usco;
+    @JSONField(name="Legal_Person")
+    private String legalPerson;
+    @JSONField(name="Idcard")
+    private String idcard;
+    @JSONField(name="Mobile")
+    private String moble;
+    @JsonIgnore
+    private String userNum;//调用深开获取的用户编号
+    @JsonIgnore
+    private Date createDate;
+
+    @Override
+    public String toString() {
+        return "CreditUserinf{" +
+                "userId='" + userId + '\'' +
+                ", userName='" + userName + '\'' +
+                ", corpName='" + corpName + '\'' +
+                ", usco='" + usco + '\'' +
+                ", legalPerson='" + legalPerson + '\'' +
+                ", idcard='" + idcard + '\'' +
+                ", moble='" + moble + '\'' +
+                ", userNum='" + userNum + '\'' +
+                ", createDate=" + createDate +
+                '}';
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getCorpName() {
+        return corpName;
+    }
+
+    public void setCorpName(String corpName) {
+        this.corpName = corpName;
+    }
+
+    public String getUsco() {
+        return usco;
+    }
+
+    public void setUsco(String usco) {
+        this.usco = usco;
+    }
+
+    public String getLegalPerson() {
+        return legalPerson;
+    }
+
+    public void setLegalPerson(String legalPerson) {
+        this.legalPerson = legalPerson;
+    }
+
+    public String getIdcard() {
+        return idcard;
+    }
+
+    public void setIdcard(String idcard) {
+        this.idcard = idcard;
+    }
+
+    public String getMoble() {
+        return moble;
+    }
+
+    public void setMoble(String moble) {
+        this.moble = moble;
+    }
+
+    public String getUserNum() {
+        return userNum;
+    }
+
+    public void setUserNum(String userNum) {
+        this.userNum = userNum;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+}

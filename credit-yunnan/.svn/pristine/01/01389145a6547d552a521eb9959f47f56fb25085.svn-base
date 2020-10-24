@@ -1,0 +1,15 @@
+package com.ccb.portal.dao;
+
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.ccb.portal.entity.YunnanCredit;
+@Mapper
+public interface YunnanCreditMapper {
+    int insert(YunnanCredit record);
+
+    int insertSelective(YunnanCredit record);
+
+	public YunnanCredit getYunNanCreditByCstId(Map<String, Object> map)throws Exception;
+}

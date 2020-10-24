@@ -1,0 +1,10 @@
+package com.ccb.portal.vo;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Const {
+    public static final String ERROR="error";
+    public static final String SEND_EXCEPTION="发送异常";
+    public static final String [] CSTTYPE={"自然人","企业"};
+}

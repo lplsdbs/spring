@@ -1,0 +1,30 @@
+package com.ccb.portal;
+
+import com.ccb.portal.entity.ConfigConstant;
+import com.ccb.portal.filter.MyDispatcherServlet;
+import com.ccb.portal.util.SdkUtil;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.web.servlet.DispatcherServlet;
+
+@SpringBootApplication
+@ServletComponentScan
+@EnableConfigurationProperties( {ConfigConstant.class})
+@PropertySource(value = {"file:./sysconfig/application.yml"})//配置文件放在外面打好包后把配置文件放在外面
+public class PortalApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(PortalApplication.class, args);
+	}
+	@Bean
+	@Qualifier(DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_BEAN_NAME)
+	public DispatcherServlet dispatcherServlet(){
+		return new MyDispatcherServlet();
+	}
+}

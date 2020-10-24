@@ -1,0 +1,18 @@
+package com.ccb.portal.interceptor;
+
+
+
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+
+@Configuration
+public class WebConfigInterceptors implements WebMvcConfigurer {
+
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new JwtInterceptor()).excludePathPatterns("/login", "/user/hello");//放掉某些特定不需要校验token的路由
+    }
+
+}

@@ -1,0 +1,35 @@
+#eureka集群配置采用多文档块方式
+spring:
+  profiles: peer1
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone:
+        http: //peer1:8761/eureka/
+---
+spring:
+  profiles: peer2
+server:
+  port: 8762
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone:
+        http: //peer2:8762/eureka/
+#maven打包之后启动两个实例
+#  java -jar eureka-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer1
+#  java -jar eureka-server-0.0.1-SNAPSHOT.jar --spring.profiles.active=peer2
+#启动
+
+
+

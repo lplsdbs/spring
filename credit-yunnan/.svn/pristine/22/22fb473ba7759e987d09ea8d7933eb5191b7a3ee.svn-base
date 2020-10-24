@@ -1,0 +1,24 @@
+package com.ccb.portal.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.ccb.portal.entity.Role;
+
+/**
+ * 角色接口
+ * @author linyu
+ *
+ */
+@Mapper
+public interface RoleDao extends BaseDao<Role> {
+
+	/**
+	 * 获取角色列表
+	 * @param roleInfo 查询参数
+	 * @return 角色列表
+	 */
+	public List<Role> getRoleList(Map<String, String> map);
+}

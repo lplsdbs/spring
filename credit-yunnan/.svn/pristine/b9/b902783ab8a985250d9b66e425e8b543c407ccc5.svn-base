@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccb.portal.dao.CreditUserinfMapper" >
+  <resultMap id="BaseResultMap" type="com.ccb.portal.entity.CreditUserinf" >
+    <id column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="CORP_NAME" property="corpName" jdbcType="VARCHAR" />
+    <result column="USCO" property="usco" jdbcType="VARCHAR" />
+    <result column="LEGAL_PERSON" property="legalPerson" jdbcType="VARCHAR" />
+    <result column="IDCARD" property="idcard" jdbcType="VARCHAR" />
+    <result column="MOBLE" property="moble" jdbcType="VARCHAR" />
+    <result column="USER_NUM" property="userNum" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="CST_NO" property="cstNo" jdbcType="VARCHAR" />
+    <result column="CARD_TYPE" property="cardType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USER_ID, USER_NAME, CORP_NAME, USCO, LEGAL_PERSON, IDCARD, MOBLE, USER_NUM, CREATE_DATE, 
+    CST_NO, CARD_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CREDIT_USERINF
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CREDIT_USERINF
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ccb.portal.entity.CreditUserinf" >
+    insert into CREDIT_USERINF (USER_ID, USER_NAME, CORP_NAME, 
+      USCO, LEGAL_PERSON, IDCARD, 
+      MOBLE, USER_NUM, CREATE_DATE, 
+      CST_NO, CARD_TYPE)
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{corpName,jdbcType=VARCHAR}, 
+      #{usco,jdbcType=VARCHAR}, #{legalPerson,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{moble,jdbcType=VARCHAR}, #{userNum,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{cstNo,jdbcType=VARCHAR}, #{cardType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccb.portal.entity.CreditUserinf" >
+    insert into CREDIT_USERINF
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="corpName != null" >
+        CORP_NAME,
+      </if>
+      <if test="usco != null" >
+        USCO,
+      </if>
+      <if test="legalPerson != null" >
+        LEGAL_PERSON,
+      </if>
+      <if test="idcard != null" >
+        IDCARD,
+      </if>
+      <if test="moble != null" >
+        MOBLE,
+      </if>
+      <if test="userNum != null" >
+        USER_NUM,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="cstNo != null" >
+        CST_NO,
+      </if>
+      <if test="cardType != null" >
+        CARD_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="corpName != null" >
+        #{corpName,jdbcType=VARCHAR},
+      </if>
+      <if test="usco != null" >
+        #{usco,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null" >
+        #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="moble != null" >
+        #{moble,jdbcType=VARCHAR},
+      </if>
+      <if test="userNum != null" >
+        #{userNum,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cstNo != null" >
+        #{cstNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null" >
+        #{cardType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccb.portal.entity.CreditUserinf" >
+    update CREDIT_USERINF
+    <set >
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="corpName != null" >
+        CORP_NAME = #{corpName,jdbcType=VARCHAR},
+      </if>
+      <if test="usco != null" >
+        USCO = #{usco,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null" >
+        LEGAL_PERSON = #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        IDCARD = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="moble != null" >
+        MOBLE = #{moble,jdbcType=VARCHAR},
+      </if>
+      <if test="userNum != null" >
+        USER_NUM = #{userNum,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cstNo != null" >
+        CST_NO = #{cstNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null" >
+        CARD_TYPE = #{cardType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccb.portal.entity.CreditUserinf" >
+    update CREDIT_USERINF
+    set USER_NAME = #{userName,jdbcType=VARCHAR},
+      CORP_NAME = #{corpName,jdbcType=VARCHAR},
+      USCO = #{usco,jdbcType=VARCHAR},
+      LEGAL_PERSON = #{legalPerson,jdbcType=VARCHAR},
+      IDCARD = #{idcard,jdbcType=VARCHAR},
+      MOBLE = #{moble,jdbcType=VARCHAR},
+      USER_NUM = #{userNum,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      CST_NO = #{cstNo,jdbcType=VARCHAR},
+      CARD_TYPE = #{cardType,jdbcType=VARCHAR}
+    where USER_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

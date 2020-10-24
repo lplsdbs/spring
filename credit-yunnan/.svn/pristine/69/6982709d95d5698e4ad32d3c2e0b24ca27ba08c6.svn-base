@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccb.portal.dao.publicty.XyynXzcfInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ccb.portal.entity.publicity.XyynXzcfInfo" >
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="CF_WSH" property="cfWsh" jdbcType="VARCHAR" />
+    <result column="CF_CFMC" property="cfCfmc" jdbcType="VARCHAR" />
+    <result column="CF_CFLB1" property="cfCflb1" jdbcType="VARCHAR" />
+    <result column="CF_CFLB2" property="cfCflb2" jdbcType="VARCHAR" />
+    <result column="CF_SY" property="cfSy" jdbcType="VARCHAR" />
+    <result column="CF_YJ" property="cfYj" jdbcType="VARCHAR" />
+    <result column="CF_XDR_MC" property="cfXdrMc" jdbcType="VARCHAR" />
+    <result column="CF_XDR_SHXYM" property="cfXdrShxym" jdbcType="VARCHAR" />
+    <result column="CF_XDR_ZDM" property="cfXdrZdm" jdbcType="VARCHAR" />
+    <result column="CF_XDR_GSDJ" property="cfXdrGsdj" jdbcType="VARCHAR" />
+    <result column="CF_XDR_SWDJ" property="cfXdrSwdj" jdbcType="VARCHAR" />
+    <result column="CF_XDR_SFZ" property="cfXdrSfz" jdbcType="VARCHAR" />
+    <result column="CF_FR" property="cfFr" jdbcType="VARCHAR" />
+    <result column="CF_JG" property="cfJg" jdbcType="VARCHAR" />
+    <result column="CF_JDRQ" property="cfJdrq" jdbcType="TIMESTAMP" />
+    <result column="CF_XZJG" property="cfXzjg" jdbcType="VARCHAR" />
+    <result column="CF_XZBM" property="cfXzbm" jdbcType="VARCHAR" />
+    <result column="CF_ZT" property="cfZt" jdbcType="VARCHAR" />
+    <result column="CF_SJC" property="cfSjc" jdbcType="TIMESTAMP" />
+    <result column="CF_BZ" property="cfBz" jdbcType="VARCHAR" />
+    <result column="CF_DFBM" property="cfDfbm" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="index" type="com.ccb.portal.entity.publicity.Index">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="lyjg" jdbcType="VARCHAR" property="lyjg" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <select id="getByid" parameterType="java.lang.String" resultMap="BaseResultMap">
+          select * from XYYN_XZCF_INFO where id=#{id,,jdbcType=VARCHAR}
+  </select>
+  <select id="XyynXzcfInfolistPage" parameterType="pd" resultMap="index">
+    select id, CF_XDR_MC name,CF_XZJG lyjg,'2'status from XYYN_XZCF_INFO where 1=1
+    <if test="pd.keywords != null and pd.keywords !=''">
+      and CF_XDR_MC like '%'||#{pd.keywords,jdbcType=VARCHAR}|| '%'
+    </if>
+  </select>
+  <insert id="insert" parameterType="com.ccb.portal.entity.publicity.XyynXzcfInfo" >
+    insert into XYYN_XZCF_INFO (ID, CF_WSH, CF_CFMC, 
+      CF_CFLB1, CF_CFLB2, CF_SY, 
+      CF_YJ, CF_XDR_MC, CF_XDR_SHXYM, 
+      CF_XDR_ZDM, CF_XDR_GSDJ, CF_XDR_SWDJ, 
+      CF_XDR_SFZ, CF_FR, CF_JG, 
+      CF_JDRQ, CF_XZJG, CF_XZBM, 
+      CF_ZT, CF_SJC, CF_BZ, 
+      CF_DFBM)
+    values (#{id,jdbcType=VARCHAR}, #{cfWsh,jdbcType=VARCHAR}, #{cfCfmc,jdbcType=VARCHAR}, 
+      #{cfCflb1,jdbcType=VARCHAR}, #{cfCflb2,jdbcType=VARCHAR}, #{cfSy,jdbcType=VARCHAR}, 
+      #{cfYj,jdbcType=VARCHAR}, #{cfXdrMc,jdbcType=VARCHAR}, #{cfXdrShxym,jdbcType=VARCHAR}, 
+      #{cfXdrZdm,jdbcType=VARCHAR}, #{cfXdrGsdj,jdbcType=VARCHAR}, #{cfXdrSwdj,jdbcType=VARCHAR}, 
+      #{cfXdrSfz,jdbcType=VARCHAR}, #{cfFr,jdbcType=VARCHAR}, #{cfJg,jdbcType=VARCHAR}, 
+      #{cfJdrq,jdbcType=TIMESTAMP}, #{cfXzjg,jdbcType=VARCHAR}, #{cfXzbm,jdbcType=VARCHAR}, 
+      #{cfZt,jdbcType=VARCHAR}, #{cfSjc,jdbcType=TIMESTAMP}, #{cfBz,jdbcType=VARCHAR}, 
+      #{cfDfbm,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccb.portal.entity.publicity.XyynXzcfInfo" >
+    insert into XYYN_XZCF_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="cfWsh != null" >
+        CF_WSH,
+      </if>
+      <if test="cfCfmc != null" >
+        CF_CFMC,
+      </if>
+      <if test="cfCflb1 != null" >
+        CF_CFLB1,
+      </if>
+      <if test="cfCflb2 != null" >
+        CF_CFLB2,
+      </if>
+      <if test="cfSy != null" >
+        CF_SY,
+      </if>
+      <if test="cfYj != null" >
+        CF_YJ,
+      </if>
+      <if test="cfXdrMc != null" >
+        CF_XDR_MC,
+      </if>
+      <if test="cfXdrShxym != null" >
+        CF_XDR_SHXYM,
+      </if>
+      <if test="cfXdrZdm != null" >
+        CF_XDR_ZDM,
+      </if>
+      <if test="cfXdrGsdj != null" >
+        CF_XDR_GSDJ,
+      </if>
+      <if test="cfXdrSwdj != null" >
+        CF_XDR_SWDJ,
+      </if>
+      <if test="cfXdrSfz != null" >
+        CF_XDR_SFZ,
+      </if>
+      <if test="cfFr != null" >
+        CF_FR,
+      </if>
+      <if test="cfJg != null" >
+        CF_JG,
+      </if>
+      <if test="cfJdrq != null" >
+        CF_JDRQ,
+      </if>
+      <if test="cfXzjg != null" >
+        CF_XZJG,
+      </if>
+      <if test="cfXzbm != null" >
+        CF_XZBM,
+      </if>
+      <if test="cfZt != null" >
+        CF_ZT,
+      </if>
+      <if test="cfSjc != null" >
+        CF_SJC,
+      </if>
+      <if test="cfBz != null" >
+        CF_BZ,
+      </if>
+      <if test="cfDfbm != null" >
+        CF_DFBM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="cfWsh != null" >
+        #{cfWsh,jdbcType=VARCHAR},
+      </if>
+      <if test="cfCfmc != null" >
+        #{cfCfmc,jdbcType=VARCHAR},
+      </if>
+      <if test="cfCflb1 != null" >
+        #{cfCflb1,jdbcType=VARCHAR},
+      </if>
+      <if test="cfCflb2 != null" >
+        #{cfCflb2,jdbcType=VARCHAR},
+      </if>
+      <if test="cfSy != null" >
+        #{cfSy,jdbcType=VARCHAR},
+      </if>
+      <if test="cfYj != null" >
+        #{cfYj,jdbcType=VARCHAR},
+      </if>
+      <if test="cfXdrMc != null" >
+        #{cfXdrMc,jdbcType=VARCHAR},
+      </if>
+      <if test="cfXdrShxym != null" >
+        #{cfXdrShxym,jdbcType=VARCHAR},
+      </if>
+      <if test="cfXdrZdm != null" >
+        #{cfXdrZdm,jdbcType=VARCHAR},
+      </if>
+      <if test="cfXdrGsdj != null" >
+        #{cfXdrGsdj,jdbcType=VARCHAR},
+      </if>
+      <if test="cfXdrSwdj != null" >
+        #{cfXdrSwdj,jdbcType=VARCHAR},
+      </if>
+      <if test="cfXdrSfz != null" >
+        #{cfXdrSfz,jdbcType=VARCHAR},
+      </if>
+      <if test="cfFr != null" >
+        #{cfFr,jdbcType=VARCHAR},
+      </if>
+      <if test="cfJg != null" >
+        #{cfJg,jdbcType=VARCHAR},
+      </if>
+      <if test="cfJdrq != null" >
+        #{cfJdrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cfXzjg != null" >
+        #{cfXzjg,jdbcType=VARCHAR},
+      </if>
+      <if test="cfXzbm != null" >
+        #{cfXzbm,jdbcType=VARCHAR},
+      </if>
+      <if test="cfZt != null" >
+        #{cfZt,jdbcType=VARCHAR},
+      </if>
+      <if test="cfSjc != null" >
+        #{cfSjc,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cfBz != null" >
+        #{cfBz,jdbcType=VARCHAR},
+      </if>
+      <if test="cfDfbm != null" >
+        #{cfDfbm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

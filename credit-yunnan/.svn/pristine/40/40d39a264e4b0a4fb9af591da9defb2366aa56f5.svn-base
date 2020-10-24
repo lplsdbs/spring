@@ -1,0 +1,46 @@
+package com.ccb.portal.filter;
+
+
+import org.springframework.beans.factory.annotation.Value;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+//跨域过滤器
+@WebFilter(filterName = "CorsFilter",urlPatterns = "/*")
+public class CorsFilter implements Filter {
+    @Value("${CorsIp}")
+    private String CorsIp;
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+
+        HttpServletRequest reqs = (HttpServletRequest) servletRequest;
+
+        response.setHeader("Access-Control-Allow-Origin","*");
+
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+
+        response.setHeader("Access-Control-Allow-Methods", "POST, PUT, GET, OPTIONS, DELETE");
+
+        response.setHeader("Access-Control-Max-Age", "5000");
+
+        response.setHeader("Access-Control-Allow-Headers", "Origin, No-Cache, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type, X-E4M-With,Authorization,Token");
+
+        filterChain.doFilter(servletRequest, servletResponse);
+
+
+    }
+
+    @Override
+    public void destroy() {
+
+    }
+}

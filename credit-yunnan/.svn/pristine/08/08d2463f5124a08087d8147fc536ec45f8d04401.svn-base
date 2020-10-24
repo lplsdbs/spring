@@ -1,0 +1,18 @@
+package com.ccb.portal.service;
+
+import java.util.Map;
+
+import com.ccb.portal.entity.CreditUserinf;
+import com.ccb.portal.entity.ResponseCredit;
+import com.ccb.portal.entity.ResponsePersonCredit;
+import com.ccb.portal.entity.YunnanCredit;
+import net.sf.json.JSONObject;
+
+public interface YunnanCreditService {
+
+	public ResponseCredit getYunNanCreditByCstId(Map<String, String> map)throws Exception;
+
+	public 	ResponsePersonCredit getPersonCreditByCstId(Map map)throws Exception;
+
+    public JSONObject checkCompanyInf(CreditUserinf cr)throws Exception;
+}

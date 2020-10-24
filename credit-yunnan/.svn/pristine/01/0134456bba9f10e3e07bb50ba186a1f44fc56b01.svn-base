@@ -1,0 +1,22 @@
+package com.ccb.portal.vo;
+
+import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Component
+public class Const {
+    public static final String ERROR="error";
+    public static final String SEND_EXCEPTION="发送异常";
+    public static final String [] CSTTYPE={"企业"};
+    public static final Integer DmsnGrplistSize=6;
+    public static  String companyCheckNum(String key){
+        Map<String,String>map=new HashMap<>();
+        map.put("00","未认证");
+        map.put("01","认证通过");
+        map.put("02","认证中");
+        map.put("03","认证不通过");
+        return  map.get(key);
+    }
+}

@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="08742d23-ea2f-4470-ba37-683ffa28d1c1" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-790742636">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="5" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.16" value="2" />
+          <entry key="project.open.time.19" value="2" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="12" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="bpmn" value="11" />
+          <entry key="class" value="11" />
+          <entry key="java" value="8" />
+          <entry key="xml" value="20" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="BPMN_EDITOR" value="11" />
+          <entry key="CLASS" value="11" />
+          <entry key="JAVA" value="8" />
+          <entry key="XML" value="20" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="562" />
+          <entry key="xml" value="115" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="562" />
+          <entry key="XML" value="115" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/activiti.cfg.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="95" column="31" lean-forward="true" selection-start-line="95" selection-start-column="31" selection-end-line="95" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/lpl/activiti/springtest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="354">
+              <caret line="149" column="23" lean-forward="true" selection-start-line="149" selection-start-column="23" selection-end-line="149" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.16.1/activiti-engine-5.16.1.jar!/org/activiti/engine/TaskService.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="28">
+              <caret line="39" column="14" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.16.1/activiti-engine-5.16.1.jar!/org/activiti/engine/RuntimeService.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>mysql</find>
+      <find>task</find>
+      <find>financialReport</find>
+      <find>accountancy</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/resources/spring/activiti.cfg.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lpl/activiti/MyEventListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lpl/activiti/process.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lpl/activiti/doc.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/Spring-Context.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/test/VacationRequest.bpmn20.bpmn" />
+        <option value="$PROJECT_DIR$/src/main/resources/activiti.cfg.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/test/finacni-report.bpmn20.bpmn" />
+        <option value="$PROJECT_DIR$/src/main/resources/test/finacni-report.bpmn20.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/test/VacationRequest.bpmn20.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/test/my-process.bpmn20.bpmn" />
+        <option value="$PROJECT_DIR$/src/main/resources/test/ll.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/test/ll.bpmn" />
+        <option value="$PROJECT_DIR$/src/main/java/com/lpl/activiti/springtest.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\maven\maven3.39" />
+        <option name="mavenHome" value="E:/maven/apache-maven-3.3.9" />
+        <option name="userSettingsFile" value="E:\maven\apache-maven-3.3.9\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="100" />
+    <option name="y" value="540" />
+    <option name="width" value="1428" />
+    <option name="height" value="540" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="activitispring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springactiviti" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="activitispring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springactiviti" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="activitispring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springactiviti" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="activitispring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springactiviti" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="activitispring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springactiviti" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lpl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="activitispring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springactiviti" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lpl" type="462c0819:PsiDirectoryNode" />
+              <item name="activiti" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="activitispring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springactiviti" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="activitispring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springactiviti" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="activitispring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springactiviti" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="activitispring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springactiviti" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1597315055974" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2997685" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\workspace\activiti-spring\springactiviti\src\main\resources\test" />
+      <recent name="D:\project\workspace\activiti-spring\springactiviti\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\project\workspace\activiti-spring\springactiviti\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.springtest.completeTask">
+    <configuration name="springtest.completeTask" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="activitispring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lpl.activiti.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lpl.activiti" />
+      <option name="MAIN_CLASS_NAME" value="com.lpl.activiti.springtest" />
+      <option name="METHOD_NAME" value="completeTask" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="springtest.deployFlow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="activitispring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lpl.activiti.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lpl.activiti" />
+      <option name="MAIN_CLASS_NAME" value="com.lpl.activiti.springtest" />
+      <option name="METHOD_NAME" value="deployFlow" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="springtest.startProcessAndComp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="activitispring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lpl.activiti.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lpl.activiti" />
+      <option name="MAIN_CLASS_NAME" value="com.lpl.activiti.springtest" />
+      <option name="METHOD_NAME" value="startProcessAndComp" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="springtest.taskQuery" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="activitispring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lpl.activiti.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lpl.activiti" />
+      <option name="MAIN_CLASS_NAME" value="com.lpl.activiti.springtest" />
+      <option name="METHOD_NAME" value="taskQuery" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="springtest.test3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="activitispring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lpl.activiti.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lpl.activiti" />
+      <option name="MAIN_CLASS_NAME" value="com.lpl.activiti.springtest" />
+      <option name="METHOD_NAME" value="test3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.springtest.taskQuery" />
+      <item itemvalue="JUnit.springtest.deployFlow" />
+      <item itemvalue="JUnit.springtest.startProcessAndComp" />
+      <item itemvalue="JUnit.springtest.completeTask" />
+      <item itemvalue="JUnit.springtest.test3" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.springtest.completeTask" />
+        <item itemvalue="JUnit.springtest.startProcessAndComp" />
+        <item itemvalue="JUnit.springtest.deployFlow" />
+        <item itemvalue="JUnit.springtest.test3" />
+        <item itemvalue="JUnit.springtest.taskQuery" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="08742d23-ea2f-4470-ba37-683ffa28d1c1" name="Default Changelist" comment="" />
+      <created>1595403780386</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595403780386</updated>
+      <workItem from="1595403783228" duration="12462000" />
+      <workItem from="1595491008920" duration="10992000" />
+      <workItem from="1595512568445" duration="40000" />
+      <workItem from="1595574753267" duration="7997000" />
+      <workItem from="1595942536613" duration="1546000" />
+      <workItem from="1596014407971" duration="599000" />
+      <workItem from="1596095819567" duration="627000" />
+      <workItem from="1596177893755" duration="2438000" />
+      <workItem from="1596271898566" duration="1205000" />
+      <workItem from="1596281545439" duration="599000" />
+      <workItem from="1597228851050" duration="2083000" />
+      <workItem from="1597241150101" duration="4103000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="springtest_completeTask - 2020.07.28 at 16h 28m 35s.xml">
+      <configuration name="springtest.completeTask" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="springtest_test3 - 2020.07.28 at 16h 29m 48s.xml">
+      <configuration name="springtest.test3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="springtest_deployFlow - 2020.07.28 at 16h 34m 41s.xml">
+      <configuration name="springtest.deployFlow" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="springtest_test3 - 2020.07.28 at 16h 34m 54s.xml">
+      <configuration name="springtest.test3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="springtest_deployFlow - 2020.07.28 at 16h 37m 08s.xml">
+      <configuration name="springtest.deployFlow" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="springtest_test3 - 2020.07.28 at 16h 37m 20s.xml">
+      <configuration name="springtest.test3" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="springtest_deployFlow - 2020.07.28 at 17h 22m 08s.xml">
+      <configuration name="springtest.deployFlow" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="springtest_deployFlow - 2020.07.28 at 17h 24m 00s.xml">
+      <configuration name="springtest.deployFlow" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="springtest_startProcessAndComp - 2020.07.28 at 17h 25m 15s.xml">
+      <configuration name="springtest.startProcessAndComp" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="springtest_completeTask - 2020.07.28 at 17h 26m 11s.xml">
+      <configuration name="springtest.completeTask" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="44691000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="80" y="432" width="1142" height="432" extended-state="1" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27675277" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Learn" order="7" />
+      <window_info id="Web" order="8" side_tool="true" />
+      <window_info id="BPMN Editor" order="9" weight="0.1769437" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.06930693" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.15700142" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.17963225" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32956153" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="BPMNPalette" order="5" weight="0.12734585" />
+      <window_info anchor="right" id="Maven Projects" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>taskss</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>tasks</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>deploymentResources</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>processDefinition</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.16.1/activiti-engine-5.16.1.jar!/org/activiti/engine/ProcessEngineConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="117" column="64" selection-start-line="117" selection-start-column="64" selection-end-line="117" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.16.1/activiti-engine-5.16.1.jar!/org/activiti/engine/impl/cfg/BeansConfigurationHelper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.2.6.RELEASE/spring-core-4.2.6.RELEASE.jar!/org/springframework/core/io/ClassPathResource.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="32" column="17" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.16.1/activiti-engine-5.16.1.jar!/org/activiti/engine/impl/db/DbSchemaCreate.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="15" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.16.1/activiti-engine-5.16.1.jar!/org/activiti/engine/delegate/event/ActivitiEventType.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5544">
+          <caret line="252" column="4" selection-start-line="252" selection-start-column="4" selection-end-line="256" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/Spring-Mvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/test/study.bpmn">
+      <provider selected="true" editor-type-id="bpmn-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/test/ll.bpmn">
+      <provider selected="true" editor-type-id="bpmn-editor" />
+      <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="139" column="33" selection-start-line="139" selection-start-column="33" selection-end-line="139" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.16.1/activiti-engine-5.16.1.jar!/org/activiti/engine/delegate/event/ActivitiEvent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.16.1/activiti-engine-5.16.1.jar!/org/activiti/engine/impl/repository/DeploymentBuilderImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="111" column="36" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.16.1/activiti-engine-5.16.1.jar!/org/activiti/engine/repository/DeploymentBuilder.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="27" column="33" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/test/VacationRequest.bpmn20.xml">
+      <provider editor-type-id="bpmn-editor" />
+      <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="51" column="21" selection-start-line="51" selection-start-column="21" selection-end-line="51" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/test/finacni-report.bpmn20.xml">
+      <provider editor-type-id="bpmn-editor" />
+      <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-spring/5.16.1/activiti-spring-5.16.1.jar!/org/activiti/spring/SpringProcessEngineConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="126" column="13" selection-start-line="126" selection-start-column="13" selection-end-line="126" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lpl/activiti/process.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lpl/activiti/MyEventListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lpl/activiti/doc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/Spring-Context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/test/my-process.bpmn20.bpmn">
+      <provider selected="true" editor-type-id="bpmn-editor" />
+      <provider editor-type-id="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/activiti.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="95" column="31" lean-forward="true" selection-start-line="95" selection-start-column="31" selection-end-line="95" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.16.1/activiti-engine-5.16.1.jar!/org/activiti/engine/RuntimeService.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/lpl/activiti/springtest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="149" column="23" lean-forward="true" selection-start-line="149" selection-start-column="23" selection-end-line="149" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/activiti/activiti-engine/5.16.1/activiti-engine-5.16.1.jar!/org/activiti/engine/TaskService.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="39" column="14" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2997685" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2997685" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -1,0 +1,97 @@
+
+server:
+  port: 8090
+spring:
+  # oracle
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:oracle:thin:@128.196.236.19:11521/P9GSP0_CEN00003_45
+    username: essc
+    password: essc
+    #最大活跃数
+    maxActive: 20
+    #初始化数量
+    initialSize: 1
+    #最大连接等待超时时间
+    maxWait: 60000
+    #打开PSCache，并且指定每个连接PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    #通过connectionProperties属性来打开mergeSql功能；慢SQL记录
+    #connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+#    #配置监控统计拦截的filters，去掉后监控界面sql将无法统计,'wall'用于防火墙
+#    filters: stat, wall
+  application:
+    name: pshare-portal
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources.add-mappings: false 
+
+#日志配置
+logging:
+  level:
+    root: INFO  
+    org.springframework.web.servlet.DispatcherServlet: DEBUG #Spring MVC的请求分发日志级别调整为DEBUG
+    com.ccb.portal.dao: DEBUG
+  config:
+    classpath:logback.xml
+#显示服务器详细信息
+management:
+  endpoint:
+    health:
+      show-details: always
+    env:
+      enabled: true
+    beans:
+      enabled: true
+    metrics:
+      enabled: true
+    refresh:
+      enabled: true
+  endpoints:   
+    web:
+      base-path: /actuator
+      expose: '*'
+      exposure:
+        include: '*'  
+#服务器基本信息
+info:
+  app:
+    name: pshare-portal
+    version: 1.0
+
+
+#租户用户安全修改地址
+security:
+  host: http://192.168.1.5:8088/iam/v1/pshare
+
+#mybatis  
+mybatis:
+  mapper-locations: classpath:mybatis/**/*.xml
+  configLocation: classpath:mybatis-config.xml
+
+#feign.hystrix.enabled: true ## 索性禁用feign的hystrix
+  
+pagehelper:
+  helper-dialect: h2
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+file:
+  path: E:\back-group-log
+JWT:
+  expiration_time: 60000
+#允许跨域地址
+CorsIp:
+  http://localhost:8091
+#DES前后台密钥
+webPsaaword:
+  lpl1234444444444

@@ -1,0 +1,8 @@
+package com.ccb.portal.vo;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Const {
+    public static final String ERROR="error";
+}

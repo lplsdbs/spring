@@ -1,0 +1,46 @@
+package com.ccb.portal.util;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.ccb.dp.configcenter.client.ConfigCenterClient;
+
+@Component
+public class ConnectionUtil {
+	
+
+	private static  ConfigCenterClient configClient=new ConfigCenterClient();
+	static{
+		System.out.println("启动加载");
+	}
+	
+	public static String findPath(String uri) throws Exception{
+		
+//		ConfigCenterClient configClient = new ConfigCenterClient();
+		
+		String result = configClient.getCompAddress(uri, null, "MT001",null,null,null,null,null,null);
+		
+		if(result == null){
+			throw new Exception("can not find the outbound address");
+		}
+		
+		String[] results = result.split(",");
+		
+		String address =results[0];
+			
+		StringBuilder addrSb =new StringBuilder();
+		addrSb.append("http://");
+		addrSb.append(address);
+		addrSb.append("/");
+		addrSb.append(uri);
+		
+		return addrSb.toString();
+	}
+	
+	public static void main(String[] args) throws Exception{
+		
+//		System.out.println(findPath("/HttpServer/NGSP_SVR/MZT10001"));
+		
+	}
+
+}

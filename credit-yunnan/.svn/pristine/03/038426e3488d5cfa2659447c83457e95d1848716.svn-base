@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccb.portal.dao.CreditDmsnMapper" >
+  <resultMap id="BaseResultMap" type="com.ccb.portal.entity.CreditDmsn" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="DMSN_TYPE" property="dmsn_type" jdbcType="VARCHAR" />
+    <result column="DMSN_VALUE" property="dmsn_value" jdbcType="DECIMAL" />
+    <result column="CST_ID" property="cst_id" jdbcType="DECIMAL" />
+    <result column="CST_TYPE" property="cst_type" jdbcType="VARCHAR" />
+    <result column="SCORE_DATE" property="score_date" jdbcType="TIMESTAMP" />
+      <result column="mdmsn_value" property="dmsn_max_value" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, DMSN_TYPE, DMSN_VALUE, CST_ID, CST_TYPE, SCORE_DATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from CREDIT_DMSN
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <select id="getCreditDmsnByCsID" parameterType="java.util.Map"  resultMap="BaseResultMap" >
+  select a.dmsn_type, a.mdmsn_value, b.dmsn_value
+  from (select dmsn_type, max(dmsn_value) mdmsn_value
+          from credit_dmsn
+         where cst_id = #{Cst_id,jdbcType=DECIMAL}
+         group by dmsn_type) a,
+       
+       (select c.*
+          from (select dmsn_type, dmsn_value , score_date
+                  from credit_dmsn
+                 where cst_id = #{Cst_id,jdbcType=DECIMAL}) c
+          left join (select dmsn_type, max(score_date) s
+                      from credit_dmsn
+                     where cst_id = #{Cst_id,jdbcType=DECIMAL}
+                     group by dmsn_type) d
+            on c.dmsn_type = d.dmsn_type
+         where c.score_date = d.s) b
+ where a.dmsn_type = b.dmsn_type
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from CREDIT_DMSN
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.ccb.portal.entity.CreditDmsn" >
+    insert into CREDIT_DMSN (ID, DMSN_TYPE, DMSN_VALUE, 
+      CST_ID, CST_TYPE, SCORE_DATE
+      )
+    values (#{id,jdbcType=DECIMAL}, #{dmsnType,jdbcType=VARCHAR}, #{dmsnValue,jdbcType=DECIMAL}, 
+      #{cstId,jdbcType=DECIMAL}, #{cstType,jdbcType=VARCHAR}, #{scoreDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccb.portal.entity.CreditDmsn" >
+    insert into CREDIT_DMSN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="dmsnType != null" >
+        DMSN_TYPE,
+      </if>
+      <if test="dmsnValue != null" >
+        DMSN_VALUE,
+      </if>
+      <if test="cstId != null" >
+        CST_ID,
+      </if>
+      <if test="cstType != null" >
+        CST_TYPE,
+      </if>
+      <if test="scoreDate != null" >
+        SCORE_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="dmsnType != null" >
+        #{dmsnType,jdbcType=VARCHAR},
+      </if>
+      <if test="dmsnValue != null" >
+        #{dmsnValue,jdbcType=DECIMAL},
+      </if>
+      <if test="cstId != null" >
+        #{cstId,jdbcType=DECIMAL},
+      </if>
+      <if test="cstType != null" >
+        #{cstType,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreDate != null" >
+        #{scoreDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccb.portal.entity.CreditDmsn" >
+    update CREDIT_DMSN
+    <set >
+      <if test="dmsnType != null" >
+        DMSN_TYPE = #{dmsnType,jdbcType=VARCHAR},
+      </if>
+      <if test="dmsnValue != null" >
+        DMSN_VALUE = #{dmsnValue,jdbcType=DECIMAL},
+      </if>
+      <if test="cstId != null" >
+        CST_ID = #{cstId,jdbcType=DECIMAL},
+      </if>
+      <if test="cstType != null" >
+        CST_TYPE = #{cstType,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreDate != null" >
+        SCORE_DATE = #{scoreDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccb.portal.entity.CreditDmsn" >
+    update CREDIT_DMSN
+    set DMSN_TYPE = #{dmsnType,jdbcType=VARCHAR},
+      DMSN_VALUE = #{dmsnValue,jdbcType=DECIMAL},
+      CST_ID = #{cstId,jdbcType=DECIMAL},
+      CST_TYPE = #{cstType,jdbcType=VARCHAR},
+      SCORE_DATE = #{scoreDate,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

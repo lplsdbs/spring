@@ -1,0 +1,79 @@
+package com.ccb.portal.entity;
+
+import java.util.Date;
+
+public class CreditDmsn {
+    private Short id;
+
+    private String dmsn_type;
+
+    private Short dmsn_value;
+
+    private Short cst_id;
+    
+    private Short dmsn_max_value;
+
+    private String cst_type;
+
+    private Date score_date;
+    
+ 
+
+	public Short getId() {
+		return id;
+	}
+
+	public void setId(Short id) {
+		this.id = id;
+	}
+
+	public String getDmsn_type() {
+		return dmsn_type;
+	}
+
+	public void setDmsn_type(String dmsn_type) {
+		this.dmsn_type = dmsn_type;
+	}
+
+	public Short getDmsn_value() {
+		return dmsn_value;
+	}
+
+	public void setDmsn_value(Short dmsn_value) {
+		this.dmsn_value = dmsn_value;
+	}
+
+	public Short getCst_id() {
+		return cst_id;
+	}
+
+	public void setCst_id(Short cst_id) {
+		this.cst_id = cst_id;
+	}
+
+	public Short getDmsn_max_value() {
+		return dmsn_max_value;
+	}
+
+	public void setDmsn_max_value(Short dmsn_max_value) {
+		this.dmsn_max_value = dmsn_max_value;
+	}
+
+	public String getCst_type() {
+		return cst_type;
+	}
+
+	public void setCst_type(String cst_type) {
+		this.cst_type = cst_type;
+	}
+
+	public Date getScore_date() {
+		return score_date;
+	}
+
+	public void setScore_date(Date score_date) {
+		this.score_date = score_date;
+	}
+
+    
+}

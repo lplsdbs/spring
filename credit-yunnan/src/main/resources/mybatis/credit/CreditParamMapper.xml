@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccb.portal.dao.credit.CreditParamMapper" >
+<select id="getModelType" parameterType="java.lang.String" resultType="String">
+        select model_name from PARAM_MODEL_TYPE where model_num=#{modeltype}
+</select>
+<select id="getRatingLevel" parameterType="java.lang.String" resultType="String">
+      select level_name from PARAM_CREDIT_RATING_LEVEL where level_num=#{ratingtype}
+</select>
+ <select id="getDmsnType" parameterType="java.lang.String" resultType="String">
+    select lat_name from CREDIT_LAT_TYPE where lat_id=#{dmsntype}
+</select>
+</mapper>

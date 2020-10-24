@@ -1,0 +1,12 @@
+package com.ccb.portal.service;
+
+import java.util.List;
+import java.util.Map;
+
+import com.ccb.portal.entity.CreditDmsn;
+
+public interface CreditDmsnService {
+
+	public List<CreditDmsn> getCreditDmsnByCsID(Map<String, Object> map)throws Exception;
+	
+}

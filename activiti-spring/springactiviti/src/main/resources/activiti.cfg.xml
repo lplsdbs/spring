@@ -1,0 +1,111 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--配置流程引擎配置对象-->
+    <!--<bean id="datasource" class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">-->
+        <!--<property name="jdbcDriver"  value="com.mysql.jdbc.Driver"/>-->
+        <!--<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/activiti_demo"/>-->
+        <!--<property name="jdbcUsername" value="root" />-->
+        <!--<property name="jdbcPassword" value="root" />-->
+        <!--<property name="databaseSchemaUpdate" value="true"/>-->
+    <!--</bean>-->
+    <!--这个bean会用来构建ProcessEngine。 有多个类可以用来定义processEngineConfiguration。 这些类对应不同的环境，并设置了对应的默认值。 最好选择（最）适用于你的环境的类， 这样可以少配置几个引擎的参数。 下面是目前可以使用的类（以后会包含更多）：-->
+
+    <!--org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration: 单独运行的流程引擎。Activiti会自己处理事务。 默认，数据库只在引擎启动时检测 （如果没有Activiti的表或者表结构不正确就会抛出异常）。-->
+
+    <!--org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration: 单元测试时的辅助类。Activiti会自己控制事务。 默认使用H2内存数据库。数据库表会在引擎启动时创建，关闭时删除。 使用它时，不需要其他配置（除非使用job执行器或邮件功能）。-->
+
+    <!--org.activiti.spring.SpringProcessEngineConfiguration: 在Spring环境下使用流程引擎。 参考Spring集成章节。-->
+
+    <!--org.activiti.engine.impl.cfg.JtaProcessEngineConfiguration: 单独运行流程引擎，并使用JTA事务。-->
+    <!--<bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">-->
+        <!--&lt;!&ndash;jdbcUrl: 数据库的JDBC URL。&ndash;&gt;-->
+
+        <!--&lt;!&ndash;jdbcDriver: 对应不同数据库类型的驱动。&ndash;&gt;-->
+
+        <!--&lt;!&ndash;jdbcUsername: 连接数据库的用户名。&ndash;&gt;-->
+
+        <!--&lt;!&ndash;jdbcPassword: 连接数据库的密码。&ndash;&gt;-->
+
+        <!--&lt;!&ndash;基于JDBC参数配置的数据库连接 会使用默认的MyBatis连接池。 下面的参数可以用来配置连接池（来自MyBatis参数）：&ndash;&gt;-->
+
+        <!--&lt;!&ndash;jdbcMaxActiveConnections: 连接池中处于被使用状态的连接的最大值。默认为10。&ndash;&gt;-->
+
+        <!--&lt;!&ndash;jdbcMaxIdleConnections: 连接池中处于空闲状态的连接的最大值。&ndash;&gt;-->
+
+        <!--&lt;!&ndash;jdbcMaxCheckoutTime: 连接被取出使用的最长时间，超过时间会被强制回收。 默认为20000（20秒）。&ndash;&gt;-->
+
+        <!--&lt;!&ndash;jdbcMaxWaitTime: 这是一个底层配置，让连接池可以在长时间无法获得连接时， 打印一条日志，并重新尝试获取一个连接。（避免因为错误配置导致沉默的操作失败）。 默认为20000（20秒）&ndash;&gt;-->
+        <!--<property name="jdbcDriver"  value="com.mysql.jdbc.Driver"/>-->
+        <!--<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/activiti_demo"/>-->
+        <!--<property name="jdbcUsername" value="root" />-->
+        <!--<property name="jdbcPassword" value="root" />-->
+        <!--&lt;!&ndash;<property name="databaseSchemaUpdate" value="true"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;databaseSchemaUpdate: 设置流程引擎启动和关闭时如何处理数据库表。&ndash;&gt;-->
+
+        <!--&lt;!&ndash;false（默认）：检查数据库表的版本和依赖库的版本， 如果版本不匹配就抛出异常。&ndash;&gt;-->
+
+        <!--&lt;!&ndash;true: 构建流程引擎时，执行检查，如果需要就执行更新。 如果表不存在，就创建。&ndash;&gt;-->
+
+        <!--&lt;!&ndash;create-drop: 构建流程引擎时创建数据库表， 关闭流程引擎时删除这些表。&ndash;&gt;-->
+        <!--<property name="databaseSchemaUpdate" value="true" />-->
+        <!--<property name="jobExecutorActivate" value="false" />-->
+        <!--<property name="mailServerHost" value="mail.my-corp.com" />-->
+        <!--<property name="mailServerPort" value="5025" />-->
+        <!--<property name="typedEventListeners">-->
+            <!--<map>-->
+                <!--<entry key="JOB_EXECUTION_SUCCESS,JOB_EXECUTION_FAILURE" >-->
+                    <!--<list>-->
+                        <!--<bean class="com.lpl.activiti.MyEventListener" />-->
+                    <!--</list>-->
+                <!--</entry>-->
+            <!--</map>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/activiti_demo" />
+        <property name="username" value="root" />
+        <property name="password" value="root" />
+    </bean>
+<!--可以把activiti的事务和自己的事务结合在一起-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+        <property name="dataSource" ref="dataSource" />
+        <property name="transactionManager" ref="transactionManager" />
+        <property name="databaseSchemaUpdate" value="true" />
+        <property name="jobExecutorActivate" value="false" />
+        <property name="typedEventListeners">
+            <map>
+                <entry key="JOB_EXECUTION_SUCCESS,JOB_EXECUTION_FAILURE" >
+                    <list>
+                        <bean class="com.lpl.activiti.MyEventListener" />
+                    </list>
+                </entry>
+            </map>
+        </property>
+        <property name="deploymentResources" >
+          <list>
+              <value>classpath*:/test/VacationRequest.bpmn20.xml</value>
+          </list>
+        </property><!--默认，上面的配置会把所有匹配的资源发布到Activiti引擎的一个单独发布包下,如果有多个包只修改了一个那么就会改变所有的。导致整个所有的流程都重新发布-->
+        <!--single-resource: 为每个单独的资源创建一个发布包，并对这些发布包进行重复检测。 你可以单独发布每个流程定义，并在修改流程定义后只创建一个新的流程定义版本。-->
+        <property name="deploymentMode" value="single-resource" />
+    </bean>
+
+    <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+        <property name="processEngineConfiguration" ref="processEngineConfiguration" />
+    </bean>
+
+    <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService" />
+    <bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService" />
+    <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService" />
+    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService" />
+    <bean id="managementService" factory-bean="processEngine" factory-method="getManagementService" />
+
+
+</beans>

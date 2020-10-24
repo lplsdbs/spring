@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccb.portal.dao.CreditRecommendTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.ccb.portal.entity.CreditRecommendType" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="TYPE_NAME" property="typeName" jdbcType="VARCHAR" />
+    <result column="LEVE_SCORE" property="leveScore" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, TYPE_NAME, LEVE_SCORE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from CREDIT_RECOMMEND_TYPE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <select id="getCreditLeveByScore" parameterType="java.util.Map" resultMap="BaseResultMap">
+          select *from CREDIT_RECOMMEND_TYPE where LEVE_SCORE&lt;=#{CreditValue}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from CREDIT_RECOMMEND_TYPE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.ccb.portal.entity.CreditRecommendType" >
+    insert into CREDIT_RECOMMEND_TYPE (ID, TYPE_NAME, LEVE_SCORE
+      )
+    values (#{id,jdbcType=DECIMAL}, #{typeName,jdbcType=VARCHAR}, #{leveScore,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccb.portal.entity.CreditRecommendType" >
+    insert into CREDIT_RECOMMEND_TYPE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="typeName != null" >
+        TYPE_NAME,
+      </if>
+      <if test="leveScore != null" >
+        LEVE_SCORE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="typeName != null" >
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="leveScore != null" >
+        #{leveScore,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ccb.portal.entity.CreditRecommendType" >
+    update CREDIT_RECOMMEND_TYPE
+    <set >
+      <if test="typeName != null" >
+        TYPE_NAME = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="leveScore != null" >
+        LEVE_SCORE = #{leveScore,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ccb.portal.entity.CreditRecommendType" >
+    update CREDIT_RECOMMEND_TYPE
+    set TYPE_NAME = #{typeName,jdbcType=VARCHAR},
+      LEVE_SCORE = #{leveScore,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

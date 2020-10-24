@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ccb.portal.dao.publicty.XyynXzxkInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ccb.portal.entity.publicity.XyynXzxkInfo" >
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="XK_WSH" property="xkWsh" jdbcType="VARCHAR" />
+    <result column="XK_XMMC" property="xkXmmc" jdbcType="VARCHAR" />
+    <result column="XK_SPLB" property="xkSplb" jdbcType="VARCHAR" />
+    <result column="XK_NR" property="xkNr" jdbcType="VARCHAR" />
+    <result column="XK_XDR_MC" property="xkXdrMc" jdbcType="VARCHAR" />
+    <result column="XK_XDR_SHXYM" property="xkXdrShxym" jdbcType="VARCHAR" />
+    <result column="XK_XDR_ZDM" property="xkXdrZdm" jdbcType="VARCHAR" />
+    <result column="XK_XDR_GSDJ" property="xkXdrGsdj" jdbcType="VARCHAR" />
+    <result column="XK_XDR_SWDJ" property="xkXdrSwdj" jdbcType="VARCHAR" />
+    <result column="XK_XDR_SFZ" property="xkXdrSfz" jdbcType="VARCHAR" />
+    <result column="XK_FR" property="xkFr" jdbcType="VARCHAR" />
+    <result column="XK_JDRQ" property="xkJdrq" jdbcType="TIMESTAMP" />
+    <result column="XK_JZQ" property="xkJzq" jdbcType="TIMESTAMP" />
+    <result column="XK_XZJG" property="xkXzjg" jdbcType="VARCHAR" />
+    <result column="XK_XZBM" property="xkXzbm" jdbcType="VARCHAR" />
+    <result column="XK_ZT" property="xkZt" jdbcType="VARCHAR" />
+    <result column="XK_SJC" property="xkSjc" jdbcType="TIMESTAMP" />
+    <result column="XK_BZ" property="xkBz" jdbcType="VARCHAR" />
+    <result column="XK_DFBM" property="xkDfbm" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="index" type="com.ccb.portal.entity.publicity.Index">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="lyjg" jdbcType="VARCHAR" property="lyjg" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <select id="getIndexlistPage" parameterType="pd" resultMap="index">
+    select id, XK_XDR_MC name,XK_XZJG lyjg,'1'status from XYYN_XZXK_INFO where 1=1
+    <if test="pd.keywords != null and pd.keywords !=''">
+      and XK_XDR_MC like '%'||#{pd.keywords,jdbcType=VARCHAR}|| '%'
+    </if>
+    union
+    select id, CF_XDR_MC name,CF_XZJG lyjg,'2'status from XYYN_XZCF_INFO where 1=1
+    <if test="pd.keywords != null and pd.keywords !=''">
+      and CF_XDR_MC like '%'||#{pd.keywords,jdbcType=VARCHAR}|| '%'
+    </if>
+    union
+    select id, NAME||'"黑名单"'name,ADD_DEPARTMENT lyjg,'4'status from XYYN_HHMD_INFO where LIST_TYPE=0
+    <if test="pd.keywords != null and pd.keywords !=''">
+      and NAME like '%'||#{pd.keywords,jdbcType=VARCHAR}|| '%'
+    </if>
+    union
+    select id, NAME||'"红名单"'name,ADD_DEPARTMENT lyjg,'3'status from XYYN_HHMD_INFO where LIST_TYPE=1
+    <if test="pd.keywords != null and pd.keywords !=''">
+      and NAME like '%'||#{pd.keywords,jdbcType=VARCHAR}|| '%'
+    </if>
+
+  </select>
+  <select id="getByid" parameterType="java.lang.String" resultMap="BaseResultMap">
+          select * from XYYN_XZXK_INFO where id=#{id,,jdbcType=VARCHAR}
+  </select>
+  <select id="xyynXzxkInfolistPage" parameterType="pd" resultMap="index">
+          select id, XK_XDR_MC name,XK_XZJG lyjg,'1'status from XYYN_XZXK_INFO where 1=1
+        <if test="pd.keywords != null and pd.keywords !=''">
+          and XK_XDR_MC like '%'||#{pd.keywords,jdbcType=VARCHAR}|| '%'
+        </if>
+  </select>
+  <insert id="insert" parameterType="com.ccb.portal.entity.publicity.XyynXzxkInfo" >
+    insert into XYYN_XZXK_INFO (ID, XK_WSH, XK_XMMC, 
+      XK_SPLB, XK_NR, XK_XDR_MC, 
+      XK_XDR_SHXYM, XK_XDR_ZDM, XK_XDR_GSDJ, 
+      XK_XDR_SWDJ, XK_XDR_SFZ, XK_FR, 
+      XK_JDRQ, XK_JZQ, XK_XZJG, 
+      XK_XZBM, XK_ZT, XK_SJC, 
+      XK_BZ, XK_DFBM)
+    values (#{id,jdbcType=VARCHAR}, #{xkWsh,jdbcType=VARCHAR}, #{xkXmmc,jdbcType=VARCHAR}, 
+      #{xkSplb,jdbcType=VARCHAR}, #{xkNr,jdbcType=VARCHAR}, #{xkXdrMc,jdbcType=VARCHAR}, 
+      #{xkXdrShxym,jdbcType=VARCHAR}, #{xkXdrZdm,jdbcType=VARCHAR}, #{xkXdrGsdj,jdbcType=VARCHAR}, 
+      #{xkXdrSwdj,jdbcType=VARCHAR}, #{xkXdrSfz,jdbcType=VARCHAR}, #{xkFr,jdbcType=VARCHAR}, 
+      #{xkJdrq,jdbcType=TIMESTAMP}, #{xkJzq,jdbcType=TIMESTAMP}, #{xkXzjg,jdbcType=VARCHAR}, 
+      #{xkXzbm,jdbcType=VARCHAR}, #{xkZt,jdbcType=VARCHAR}, #{xkSjc,jdbcType=TIMESTAMP}, 
+      #{xkBz,jdbcType=VARCHAR}, #{xkDfbm,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ccb.portal.entity.publicity.XyynXzxkInfo" >
+    insert into XYYN_XZXK_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="xkWsh != null" >
+        XK_WSH,
+      </if>
+      <if test="xkXmmc != null" >
+        XK_XMMC,
+      </if>
+      <if test="xkSplb != null" >
+        XK_SPLB,
+      </if>
+      <if test="xkNr != null" >
+        XK_NR,
+      </if>
+      <if test="xkXdrMc != null" >
+        XK_XDR_MC,
+      </if>
+      <if test="xkXdrShxym != null" >
+        XK_XDR_SHXYM,
+      </if>
+      <if test="xkXdrZdm != null" >
+        XK_XDR_ZDM,
+      </if>
+      <if test="xkXdrGsdj != null" >
+        XK_XDR_GSDJ,
+      </if>
+      <if test="xkXdrSwdj != null" >
+        XK_XDR_SWDJ,
+      </if>
+      <if test="xkXdrSfz != null" >
+        XK_XDR_SFZ,
+      </if>
+      <if test="xkFr != null" >
+        XK_FR,
+      </if>
+      <if test="xkJdrq != null" >
+        XK_JDRQ,
+      </if>
+      <if test="xkJzq != null" >
+        XK_JZQ,
+      </if>
+      <if test="xkXzjg != null" >
+        XK_XZJG,
+      </if>
+      <if test="xkXzbm != null" >
+        XK_XZBM,
+      </if>
+      <if test="xkZt != null" >
+        XK_ZT,
+      </if>
+      <if test="xkSjc != null" >
+        XK_SJC,
+      </if>
+      <if test="xkBz != null" >
+        XK_BZ,
+      </if>
+      <if test="xkDfbm != null" >
+        XK_DFBM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="xkWsh != null" >
+        #{xkWsh,jdbcType=VARCHAR},
+      </if>
+      <if test="xkXmmc != null" >
+        #{xkXmmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xkSplb != null" >
+        #{xkSplb,jdbcType=VARCHAR},
+      </if>
+      <if test="xkNr != null" >
+        #{xkNr,jdbcType=VARCHAR},
+      </if>
+      <if test="xkXdrMc != null" >
+        #{xkXdrMc,jdbcType=VARCHAR},
+      </if>
+      <if test="xkXdrShxym != null" >
+        #{xkXdrShxym,jdbcType=VARCHAR},
+      </if>
+      <if test="xkXdrZdm != null" >
+        #{xkXdrZdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xkXdrGsdj != null" >
+        #{xkXdrGsdj,jdbcType=VARCHAR},
+      </if>
+      <if test="xkXdrSwdj != null" >
+        #{xkXdrSwdj,jdbcType=VARCHAR},
+      </if>
+      <if test="xkXdrSfz != null" >
+        #{xkXdrSfz,jdbcType=VARCHAR},
+      </if>
+      <if test="xkFr != null" >
+        #{xkFr,jdbcType=VARCHAR},
+      </if>
+      <if test="xkJdrq != null" >
+        #{xkJdrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xkJzq != null" >
+        #{xkJzq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xkXzjg != null" >
+        #{xkXzjg,jdbcType=VARCHAR},
+      </if>
+      <if test="xkXzbm != null" >
+        #{xkXzbm,jdbcType=VARCHAR},
+      </if>
+      <if test="xkZt != null" >
+        #{xkZt,jdbcType=VARCHAR},
+      </if>
+      <if test="xkSjc != null" >
+        #{xkSjc,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xkBz != null" >
+        #{xkBz,jdbcType=VARCHAR},
+      </if>
+      <if test="xkDfbm != null" >
+        #{xkDfbm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

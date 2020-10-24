@@ -1,0 +1,246 @@
+package com.ccb.portal.util;
+
+
+import com.ccb.portal.entity.*;
+import com.ccb.portal.vo.Const;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.SSLContextBuilder;
+import org.apache.http.conn.ssl.TrustStrategy;
+import org.apache.http.conn.ssl.X509HostnameVerifier;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLException;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocket;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.Charset;
+import java.security.GeneralSecurityException;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+import java.util.*;
+
+
+/**
+ *
+ */
+@Component
+public class HttpClientUtils {
+
+    private static Logger logger = LoggerFactory.getLogger(HttpClientUtils.class);
+    private static PoolingHttpClientConnectionManager connMgr;
+    private static RequestConfig requestConfig;
+    private static final int MAX_TIMEOUT = 7000;
+
+    static {
+        // 设置连接池
+        connMgr = new PoolingHttpClientConnectionManager();
+        // 设置连接池大小
+        connMgr.setMaxTotal(100);
+        connMgr.setDefaultMaxPerRoute(connMgr.getMaxTotal());
+
+        RequestConfig.Builder configBuilder = RequestConfig.custom();
+        // 设置连接超时
+        configBuilder.setConnectTimeout(MAX_TIMEOUT);
+        // 设置读取超时
+        configBuilder.setSocketTimeout(MAX_TIMEOUT);
+        // 设置从连接池获取连接实例的超时
+        configBuilder.setConnectionRequestTimeout(MAX_TIMEOUT);
+        // 在提交请求之前 测试连接是否可用
+        configBuilder.setStaleConnectionCheckEnabled(true);
+        requestConfig = configBuilder.build();
+    }
+   //http
+    public static String doPost(String url, JSONObject json){
+
+        CloseableHttpClient closeableHttpClient = HttpClientBuilder.create().build();
+
+        HttpPost post = new HttpPost(url);
+
+        JSONObject jsonObject = null;
+        String result = null;
+        HttpResponse httpResponse = null;
+
+        if (null != json){
+
+            logger.info("----------------------------发送的JSON数据："+json.toString());
+            post.addHeader("content-type","application/json;charset=utf-8");
+            post.setHeader("Accept","application/json");
+            post.setEntity(new StringEntity(json.toString(), Charset.forName("UTF-8")));
+
+        }
+
+//        StringEntity stringEntity = new StringEntity(json.toString());
+//        stringEntity.setContentEncoding("UTF-8");
+//        stringEntity.setContentType("application/json");
+//        post.setEntity(stringEntity);
+
+        try {
+            httpResponse = closeableHttpClient.execute(post);//发送请求
+            System.out.println(httpResponse.getStatusLine().getStatusCode());
+            if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+
+                result = EntityUtils.toString(httpResponse.getEntity());//返回信息
+
+            }
+        } catch (Exception e) {
+            e.getMessage();
+            result = Const.SEND_EXCEPTION;
+        }
+
+
+        return result;
+
+    }
+
+    public static void main(String[] args) {
+        String url="http://128.196.221.144:9000/httpservice/personGrade";
+        JSONObject js=new JSONObject();
+        Map<String,Object>map=new HashMap<>();
+        map.put("Crdt_TpCd","1010");
+        map.put("Crdt_No","112321");
+        map.put("Cst_Nm","张三");
+        map.put("MULTI_TENANCY_ID","CN000");
+        net.sf.json.JSONObject jsonObject= net.sf.json.JSONObject.fromObject(map);
+//        js.put("RqsBscInfVO",jsonObject);
+        System.out.println(jsonObject.toString());
+        String jsonstr=jsonObject.toString();
+        System.out.println(jsonstr);
+        String response=doPost(url,jsonObject);
+        JSONObject jsl=JSONObject.fromObject(response);
+
+//        jsl.remove("AfTVO");
+//        jsl.remove("Prmpt_Inf_Topc_Dsc");
+//        jsl.remove("AgncBnkVchsonMRpCntnt");
+//        String jsoo="{\"Crdt_No\":\"420222198609257273\",\"Cst_Nm\":\"张61\",\"Scor_Crd_Scor\":\"794\",\"Scor_Rel_Lo_Dsc\":\"0.12\",\"MULTI_TENANCY_ID\":\"CN000\",\"ScsInd\":\"1\",\"type\":\"G\",\"Rsk_Qot\":0,\"Crdt_TpCd\":\"1010\"}";
+        ResponsePersonCredit re=(ResponsePersonCredit) JsonUtil.fastjsonTobean(jsl.toString(),ResponsePersonCredit.class);
+        JSONObject jsonObject1=JSONObject.fromObject(re.getAgncBnkVchsonMRpCntnt());
+        Set<String> set=jsonObject1.keySet();
+//        List<CreditDmsn>list=new ArrayList<>();
+//        for(String str:set){
+//            CreditDmsn cm=new CreditDmsn();
+//            cm.setDmsnType(str);
+//            cm.setDmsnValue(Short.valueOf(jsonObject1.get(str).toString()));
+//            list.add(cm);
+//        }
+//        System.out.println(list);
+        //        JSONObject jsonObject1=JSONObject.fromObject(response);
+//        String ag=jsonObject1.get("AgncBnkVchsonMRpCntnt").toString();
+//        jsonObject1.remove("dmsn_grplist");
+//        JSONArray jsonArray=jsonObject1.getJSONArray("dmsn_grplist");
+//        ResponseCredit yunnanCredit=(ResponseCredit) JsonUtil.jsontobean(response, ResponseCredit.class, ResponseDmsn.class,"dmsn_grplist");
+//        System.out.println(response);
+//        System.out.println(jsl.toString());
+//        System.out.println(re);
+////
+//        String str="{\"履约表现\":8,\"近期债务\":6,\"额度使用\":6,\"往来账龄\":5,\"金融资产\":9,\"身份特质\":4}";
+//        JSONObject jsonObject=JSONObject.fromObject(str);
+//        System.out.println(jsonObject.toString());
+    }
+    /**
+     * 发送 SSL POST 请求（HTTPS），JSON形式
+     * @param apiUrl API接口URL
+     * @param json JSON对象
+     * @return
+     */
+
+    public static String doPostSSL(String apiUrl, Object json) {
+        CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(createSSLConnSocketFactory()).setConnectionManager(connMgr).setDefaultRequestConfig(requestConfig).build();
+        HttpPost httpPost = new HttpPost(apiUrl);
+        CloseableHttpResponse response = null;
+        String httpStr = null;
+
+        try {
+            httpPost.setConfig(requestConfig);
+            StringEntity stringEntity = new StringEntity(json.toString(),"UTF-8");//解决中文乱码问题
+//            stringEntity.setContentEncoding("UTF-8");
+//            stringEntity.setContentType("application/json");
+            httpPost.addHeader("content-type","application/json;charset=utf-8");
+            httpPost.setHeader("Accept","application/json");
+            httpPost.setEntity(stringEntity);
+            response = httpClient.execute(httpPost);
+            int statusCode = response.getStatusLine().getStatusCode();
+            if (statusCode != HttpStatus.SC_OK) {
+                return null;
+            }
+            HttpEntity entity = response.getEntity();
+            if (entity == null) {
+                return null;
+            }
+            httpStr = EntityUtils.toString(entity, "utf-8");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (response != null) {
+                try {
+                    EntityUtils.consume(response.getEntity());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return httpStr;
+    }
+
+    /**
+     * 创建SSL安全连接
+     *
+     * @return
+     */
+    private static SSLConnectionSocketFactory createSSLConnSocketFactory() {
+        SSLConnectionSocketFactory sslsf = null;
+        try {
+            SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustStrategy() {
+
+                public boolean isTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                    return true;
+                }
+            }).build();
+            sslsf = new SSLConnectionSocketFactory(sslContext, new X509HostnameVerifier() {
+
+                @Override
+                public boolean verify(String arg0, SSLSession arg1) {
+                    return true;
+                }
+
+                @Override
+                public void verify(String host, SSLSocket ssl) throws IOException {
+                }
+
+                @Override
+                public void verify(String host, X509Certificate cert) throws SSLException {
+                }
+
+                @Override
+                public void verify(String host, String[] cns, String[] subjectAlts) throws SSLException {
+                }
+            });
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        }
+        return sslsf;
+    }
+}

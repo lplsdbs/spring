@@ -1,0 +1,23 @@
+package com.ccb.portal.service.Impl;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ccb.portal.dao.YunnanCreditMapper;
+import com.ccb.portal.entity.YunnanCredit;
+import com.ccb.portal.service.YunnanCreditService;
+
+@Service
+public class YunnanCreditServiceImpl implements YunnanCreditService{
+	@Autowired
+	YunnanCreditMapper yunnanCreditMapper;
+
+	@Override
+	public YunnanCredit getYunNanCreditByCstId(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return yunnanCreditMapper.getYunNanCreditByCstId(map);
+	}
+
+}

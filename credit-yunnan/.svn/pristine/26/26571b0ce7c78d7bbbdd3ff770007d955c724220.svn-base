@@ -1,0 +1,77 @@
+package com.ccb.portal.entity;
+
+import java.util.List;
+
+public class YunnanCredit {
+    private Short cst_id;
+
+    private String Cst_type;
+
+    private Short credit_value;
+
+    private String model_type;
+
+    private Short comment_limit;
+
+    private String credit_rating_level;
+    
+    private List<CreditDmsn> dmsn_grplist;
+
+	public List<CreditDmsn> getDmsn_grplist() {
+		return dmsn_grplist;
+	}
+
+	public void setDmsn_grplist(List<CreditDmsn> dmsn_grplist) {
+		this.dmsn_grplist = dmsn_grplist;
+	}
+
+	public Short getCst_id() {
+		return cst_id;
+	}
+
+	public void setCst_Id(Short cst_id) {
+		this.cst_id = cst_id;
+	}
+
+	public String getCst_type() {
+		return Cst_type;
+	}
+
+	public void setCst_type(String cst_type) {
+		Cst_type = cst_type;
+	}
+
+	public Short getCredit_value() {
+		return credit_value;
+	}
+
+	public void setCredit_Value(Short credit_value) {
+		this.credit_value = credit_value;
+	}
+
+	public String getModel_type() {
+		return model_type;
+	}
+
+	public void setModel_type(String model_type) {
+		this.model_type = model_type;
+	}
+
+	public Short getComment_limit() {
+		return comment_limit;
+	}
+
+	public void setComment_limit(Short comment_limit) {
+		this.comment_limit = comment_limit;
+	}
+
+	public String getCredit_rating_level() {
+		return credit_rating_level;
+	}
+
+	public void setCredit_rating_level(String credit_rating_level) {
+		this.credit_rating_level = credit_rating_level;
+	}
+    
+
+}

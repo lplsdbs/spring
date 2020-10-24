@@ -1,0 +1,24 @@
+package com.ccb.portal.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.ccb.portal.entity.CreditDmsn;
+@Mapper
+public interface CreditDmsnMapper {
+    int deleteByPrimaryKey(Short id);
+
+    int insert(CreditDmsn record);
+
+    int insertSelective(CreditDmsn record);
+
+    CreditDmsn selectByPrimaryKey(Short id);
+
+    int updateByPrimaryKeySelective(CreditDmsn record);
+
+    int updateByPrimaryKey(CreditDmsn record);
+
+	public List<CreditDmsn> getCreditDmsnByCsID(Map<String, Object> map)throws Exception;
+}

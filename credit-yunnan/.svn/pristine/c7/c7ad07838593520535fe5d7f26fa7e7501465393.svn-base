@@ -1,0 +1,21 @@
+package com.ccb.portal.service.Impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ccb.portal.dao.SysCodeDao;
+import com.ccb.portal.entity.SysCode;
+
+@Service
+public class SysCodeService {
+
+	@Autowired
+	private SysCodeDao sysCodeDao;
+	
+	public List<SysCode> getSysCodeByKeys(List<String> list){
+		
+		return this.sysCodeDao.getSysCodeByKeys(list);
+	}
+}
